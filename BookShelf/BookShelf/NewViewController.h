@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  NewViewController.h
 //  BookShelf
 //
 //  Created by dagad on 05/04/2019.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface NewViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

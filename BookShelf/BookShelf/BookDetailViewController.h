@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  BookDetailViewController.h
 //  BookShelf
 //
 //  Created by dagad on 05/04/2019.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface BookDetailViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
