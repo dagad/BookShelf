@@ -7,6 +7,7 @@
 //
 
 #import "SearchViewController.h"
+#import "BookShelf-Swift.h"
 
 @interface SearchViewController ()
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [BookService.shared searchBooksByKeyword:@"mongodb" page:@"0" success:^(NSArray *books) {
+        NSLog(@"received search result");
+    } failure:^(NSError *error) {
+        
+    }];
     
 }
 

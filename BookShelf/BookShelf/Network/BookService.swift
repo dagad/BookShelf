@@ -15,22 +15,25 @@ class BookService: NSObject {
     static let shared = BookService()
     private let provider = MoyaProvider<BookAPI>()
 
-    typealias NewBooksResult = Dictionary<String, Any>
-
-    func requestNewBooks(success: @escaping (NewBooksResult?) -> Void, failure: @escaping (Error) -> Void) {
+    func requestNewBooks(success: @escaping ([Book]) -> Void, failure: @escaping (Error) -> Void) {
         provider.request(.new) { result in
             switch result {
             case let .success(response):
-                let data = response.data
-                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NewBooksResult
-                success(json ?? NewBooksResult())
+                do {
+                    let books = try response.map(to: [Book].self, keyPath: "books")
+                    success(books)
+                } catch {
+                    print("\(error)")
+                    failure(error)
+                }
             case let .failure(error):
                 print(error)
+                failure(error)
             }
         }
     }
     
-    func requestBookDetailWith(isbn: String, success: @escaping (Book?) -> Void, failure: @escaping (Error) -> Void) {
+    func requestBookDetailWith(isbn: String, success: @escaping (Book) -> Void, failure: @escaping (Error) -> Void) {
         provider.request(.detail(isbn: isbn)) { result in
             switch result {
             case let .success(response):
@@ -46,6 +49,23 @@ class BookService: NSObject {
                 failure(error)
             }
         }
-        
+    }
+    
+    func searchBooksBy(keyword: String, page: String, success: @escaping ([Book]) -> Void, failure: @escaping (Error) -> Void) {
+        provider.request(.search(keyword: keyword, page: page)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let books = try response.map(to: [Book].self, keyPath: "books")
+                    success(books)
+                } catch {
+                    print("\(error)")
+                    failure(error)
+                }
+            case let .failure(error):
+                print(error)
+                failure(error)
+            }
+        }
     }
 }
