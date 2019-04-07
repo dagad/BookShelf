@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NewViewController : UIViewController
+@interface NewViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSArray *books;
 
 @end
 
