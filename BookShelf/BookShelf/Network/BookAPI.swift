@@ -11,7 +11,7 @@ import Moya
 enum BookAPI {
     case new
     case search
-    case detail
+    case detail(isbn: String)
 }
 
 extension BookAPI: TargetType {
@@ -25,8 +25,8 @@ extension BookAPI: TargetType {
             return "/new"
         case .search:
             return "/search"
-        case .detail:
-            return "books"
+        case let .detail(isbn):
+            return "/books/\(isbn)"
         }
     }
 
@@ -41,6 +41,7 @@ extension BookAPI: TargetType {
     var task: Task {
         return .requestPlain
     }
+    
 
     var headers: [String : String]? {
         return nil
