@@ -18,11 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [BookService.shared searchBooksByKeyword:@"mongodb" page:@"0" success:^(NSArray *books) {
-        NSLog(@"received search result");
-    } failure:^(NSError *error) {
-        
-    }];
     
 }
 

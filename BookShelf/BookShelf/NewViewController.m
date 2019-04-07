@@ -17,12 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [BookService.shared requestBookDetailWithIsbn:@"9781617294136" success:^(Book *book) {
-        NSLog(@"book received");
-    } failure:^(NSError *error) {
-        
-    }];
+
     
 }
 
