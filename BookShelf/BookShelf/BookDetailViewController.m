@@ -7,6 +7,7 @@
 //
 
 #import "BookDetailViewController.h"
+#import "BookmarkContainer.h"
 #import <SDWebImage/SDWebImage.h>
 #import "BookShelf-Swift.h"
 
@@ -39,7 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.isBookmarked = NO;
+    self.isBookmarked = [[BookmarkContainer shared] isRegistered:self.book];
+    [self setBookmarkIcon:self.isBookmarked];
 
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleBookmark)];
     [self.bookmarkImageView addGestureRecognizer:gesture];
@@ -47,6 +49,7 @@
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = YES;
     }
+
     [self setTitle:@"Detail"];
     [self requestBookDetail];
 }
@@ -62,11 +65,20 @@
 
 - (void)toggleBookmark {
     if(self.isBookmarked) {
-        [self.bookmarkImageView setImage:[UIImage imageNamed:@"unlike"]];
+        [[BookmarkContainer shared] unRegisterBook:self.book];
     } else {
-        [self.bookmarkImageView setImage:[UIImage imageNamed:@"like"]];
+        [[BookmarkContainer shared] registerBook:self.book];
     }
     self.isBookmarked = !self.isBookmarked;
+    [self setBookmarkIcon:self.isBookmarked];
+}
+
+- (void)setBookmarkIcon:(BOOL)isMarked {
+    if(isMarked) {
+        [self.bookmarkImageView setImage:[UIImage imageNamed:@"like"]];
+    } else {
+        [self.bookmarkImageView setImage:[UIImage imageNamed:@"unlike"]];
+    }
 }
 
 @end

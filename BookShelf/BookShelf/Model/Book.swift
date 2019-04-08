@@ -45,5 +45,14 @@ class Book: NSObject, Mappable {
         url = map.optionalFrom("url") ?? ""
         pdf = map.optionalFrom("pdf") ?? [String: String]()
     }
+
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let target = object as? Book, target.isbn13.count > 0, isbn13.count > 0 else { return false }
+        if target.isbn13 == isbn13 {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 

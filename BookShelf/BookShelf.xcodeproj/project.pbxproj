@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B912DF2225B2E3A0016655E /* BookmarkContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912DF1225B2E3A0016655E /* BookmarkContainer.m */; };
 		2B9FA2442257306C00BAF875 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA2432257306C00BAF875 /* AppDelegate.m */; };
 		2B9FA24D2257306C00BAF875 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B9FA24B2257306C00BAF875 /* Main.storyboard */; };
 		2B9FA24F2257306D00BAF875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B9FA24E2257306D00BAF875 /* Assets.xcassets */; };
@@ -40,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		170D8AA7F76A3A1D460B9D6D /* Pods_BookShelfTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookShelfTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B912DF0225B2E3A0016655E /* BookmarkContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookmarkContainer.h; sourceTree = "<group>"; };
+		2B912DF1225B2E3A0016655E /* BookmarkContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkContainer.m; sourceTree = "<group>"; };
 		2B9FA23F2257306C00BAF875 /* BookShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B9FA2422257306C00BAF875 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2B9FA2432257306C00BAF875 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				42028FDC225ABAA8005E6685 /* BookCollectionViewCell.h */,
 				42028FDD225ABAA8005E6685 /* BookCollectionViewCell.m */,
 				42028FDE225ABAA8005E6685 /* BookCollectionViewCell.xib */,
+				2B912DF0225B2E3A0016655E /* BookmarkContainer.h */,
+				2B912DF1225B2E3A0016655E /* BookmarkContainer.m */,
 			);
 			path = BookShelf;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				2B9FA26B225731C000BAF875 /* NewViewController.m in Sources */,
 				2B9FA271225731D000BAF875 /* BookmarkViewController.m in Sources */,
 				2B9FA2442257306C00BAF875 /* AppDelegate.m in Sources */,
+				2B912DF2225B2E3A0016655E /* BookmarkContainer.m in Sources */,
 				2B9FA26E225731CA00BAF875 /* SearchViewController.m in Sources */,
 				2B9FA2552257306D00BAF875 /* main.m in Sources */,
 				42028FDF225ABAA8005E6685 /* BookCollectionViewCell.m in Sources */,
