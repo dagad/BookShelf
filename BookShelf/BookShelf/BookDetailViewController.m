@@ -12,6 +12,8 @@
 
 @interface BookDetailViewController ()
 
+@property (nonatomic) BOOL isBookmarked;
+
 @end
 
 @implementation BookDetailViewController
@@ -36,6 +38,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.isBookmarked = NO;
+
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleBookmark)];
+    [self.bookmarkImageView addGestureRecognizer:gesture];
+
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = YES;
     }
@@ -50,6 +58,15 @@
     } failure:^(NSError *error) {
         // Error Handling
     }];
+}
+
+- (void)toggleBookmark {
+    if(self.isBookmarked) {
+        [self.bookmarkImageView setImage:[UIImage imageNamed:@"unlike"]];
+    } else {
+        [self.bookmarkImageView setImage:[UIImage imageNamed:@"like"]];
+    }
+    self.isBookmarked = !self.isBookmarked;
 }
 
 @end

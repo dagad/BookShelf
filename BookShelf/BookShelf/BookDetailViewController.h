@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *bookmarkImageView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *bookImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
