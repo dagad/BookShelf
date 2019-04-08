@@ -66,7 +66,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New" id="rpf-lg-Uzx"/>
+                    <navigationItem key="navigationItem" title="New" largeTitleDisplayMode="always" id="rpf-lg-Uzx"/>
                     <connections>
                         <outlet property="collectionView" destination="mCS-ah-1Fn" id="t5Z-Ah-2mC"/>
                     </connections>
@@ -85,7 +85,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" id="mRB-cu-GGf"/>
+                    <navigationItem key="navigationItem" title="Search" largeTitleDisplayMode="always" id="mRB-cu-GGf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,7 +118,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ngr-fc-dQJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Bookmark" id="X4b-jP-5f6"/>
+                    <navigationItem key="navigationItem" title="Bookmark" largeTitleDisplayMode="always" id="X4b-jP-5f6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZBk-v6-SeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,7 +135,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="VOs-q9-F7o"/>
                     </view>
-                    <navigationItem key="navigationItem" title="History" id="6kw-VW-arX"/>
+                    <navigationItem key="navigationItem" title="History" largeTitleDisplayMode="always" id="6kw-VW-arX"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6O-sE-XtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

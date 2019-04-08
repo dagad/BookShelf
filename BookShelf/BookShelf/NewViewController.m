@@ -20,6 +20,10 @@
     [super viewDidLoad];
     
     self.books = [NSArray array];
+
+    if (@available(iOS 11.0, *)) {
+        self.navigationController.navigationBar.prefersLargeTitles = YES;
+    }
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
