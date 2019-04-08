@@ -82,14 +82,71 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwI-zC-4yy">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="iJK-KW-sDL">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="teo-kD-c5K"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNE-vm-YKV">
+                                        <rect key="frame" x="314" y="0.0" width="100" height="56"/>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="search:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="307-lh-bGs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pS3-vL-fh3">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ap0-Bg-b4C">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1C3-ss-i5q">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pS3-vL-fh3" firstAttribute="top" secondItem="NwI-zC-4yy" secondAttribute="bottom" id="7qe-nF-HdQ"/>
+                            <constraint firstItem="NwI-zC-4yy" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="9dR-9q-qaX"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="NwI-zC-4yy" secondAttribute="trailing" id="Gtt-mv-qtN"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="pS3-vL-fh3" secondAttribute="bottom" id="oYy-7D-otR"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="pS3-vL-fh3" secondAttribute="trailing" id="tdq-Ng-e6E"/>
+                            <constraint firstItem="pS3-vL-fh3" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="wc0-zc-ZEC"/>
+                            <constraint firstItem="NwI-zC-4yy" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="zGW-2t-56j"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" largeTitleDisplayMode="always" id="mRB-cu-GGf"/>
+                    <connections>
+                        <outlet property="collectionView" destination="pS3-vL-fh3" id="nGi-H6-lGp"/>
+                        <outlet property="searchBar" destination="iJK-KW-sDL" id="BG7-sy-F31"/>
+                        <outlet property="searchButton" destination="iNE-vm-YKV" id="ys6-Rt-adX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-359" y="1482"/>
+            <point key="canvasLocation" x="-359.4202898550725" y="1481.9196428571429"/>
         </scene>
         <!--Search-->
         <scene sceneID="Iqn-ww-YD9">
