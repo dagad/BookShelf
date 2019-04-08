@@ -8,6 +8,7 @@
 
 #import "NewViewController.h"
 #import "BookCollectionViewCell.h"
+#import "BookDetailViewController.h"
 #import "BookShelf-Swift.h"
 
 @interface NewViewController ()
@@ -45,7 +46,6 @@
 
 // MARK: - UICollectionViewDataSource
 - (UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    
     BookCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"bookcell" forIndexPath:indexPath];
     [cell configureCellWithBook:[self.books objectAtIndex:indexPath.item]];
     return cell;
@@ -53,6 +53,14 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.books count];
+}
+
+// MARK: - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    Book *touchedBook = [self.books objectAtIndex:indexPath.item];
+    BookDetailViewController *bookDetailVC = [[BookDetailViewController alloc] init];
+    [bookDetailVC setBook:touchedBook];
+    [self.navigationController pushViewController:bookDetailVC animated:YES];
 }
 
 // MARK: - UICollectionViewFlowLayoutDelegate
