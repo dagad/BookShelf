@@ -6,6 +6,7 @@ target 'BookShelf' do
 
   pod 'Moya'
   pod 'Moya-ModelMapper'
+  pod 'SDWebImage'
 
   target 'BookShelfTests' do
     inherit! :search_paths
