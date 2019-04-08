@@ -83,27 +83,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwI-zC-4yy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FL5-bZ-ABk">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="iJK-KW-sDL">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="56"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="teo-kD-c5K"/>
-                                        </constraints>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNE-vm-YKV">
-                                        <rect key="frame" x="314" y="0.0" width="100" height="56"/>
-                                        <state key="normal" title="Search">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="search:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="307-lh-bGs"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kSy-3c-1Yb">
+                                        <rect key="frame" x="8" y="8" width="398" height="40"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cLf-kq-saW">
+                                                <rect key="frame" x="0.0" y="0.0" width="308" height="40"/>
+                                                <edgeInsets key="layoutMargins" top="5" left="5" bottom="5" right="0.0"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbT-HA-eE6">
+                                                <rect key="frame" x="318" y="0.0" width="80" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="r39-oN-3RL"/>
+                                                </constraints>
+                                                <state key="normal" title="Search">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="search:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="lFK-rc-QgR"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="03Y-NM-NHa"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="kSy-3c-1Yb" secondAttribute="bottom" id="1Vq-K4-1no"/>
+                                    <constraint firstItem="kSy-3c-1Yb" firstAttribute="top" secondItem="FL5-bZ-ABk" secondAttribute="topMargin" id="708-nM-IfJ"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="kSy-3c-1Yb" secondAttribute="trailing" id="lPk-Pu-cau"/>
+                                    <constraint firstItem="kSy-3c-1Yb" firstAttribute="leading" secondItem="FL5-bZ-ABk" secondAttribute="leadingMargin" id="zdB-Ov-A1z"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pS3-vL-fh3">
                                 <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,21 +144,22 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="pS3-vL-fh3" firstAttribute="top" secondItem="NwI-zC-4yy" secondAttribute="bottom" id="7qe-nF-HdQ"/>
-                            <constraint firstItem="NwI-zC-4yy" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="9dR-9q-qaX"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="NwI-zC-4yy" secondAttribute="trailing" id="Gtt-mv-qtN"/>
+                            <constraint firstItem="FL5-bZ-ABk" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="DQv-eh-oHr"/>
+                            <constraint firstItem="FL5-bZ-ABk" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="RxM-bJ-XHj"/>
+                            <constraint firstItem="FL5-bZ-ABk" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="f00-7U-vp2"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="pS3-vL-fh3" secondAttribute="bottom" id="oYy-7D-otR"/>
+                            <constraint firstItem="pS3-vL-fh3" firstAttribute="top" secondItem="FL5-bZ-ABk" secondAttribute="bottom" id="rU6-NV-6wU"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="pS3-vL-fh3" secondAttribute="trailing" id="tdq-Ng-e6E"/>
                             <constraint firstItem="pS3-vL-fh3" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="wc0-zc-ZEC"/>
-                            <constraint firstItem="NwI-zC-4yy" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="zGW-2t-56j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" largeTitleDisplayMode="always" id="mRB-cu-GGf"/>
                     <connections>
                         <outlet property="collectionView" destination="pS3-vL-fh3" id="nGi-H6-lGp"/>
-                        <outlet property="searchBar" destination="iJK-KW-sDL" id="BG7-sy-F31"/>
-                        <outlet property="searchButton" destination="iNE-vm-YKV" id="ys6-Rt-adX"/>
+                        <outlet property="collectionViewBottomConstraint" destination="oYy-7D-otR" id="4Ye-iM-nL9"/>
+                        <outlet property="searchButton" destination="fbT-HA-eE6" id="YJb-kP-vN7"/>
+                        <outlet property="searchTextField" destination="cLf-kq-saW" id="tk9-Zg-oSg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
