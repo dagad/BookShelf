@@ -7,11 +7,13 @@
 //
 
 #import "BookCollectionViewCell.h"
+#import <SDWebImage/SDWebImage.h>
 #import "BookShelf-Swift.h"
 
 @implementation BookCollectionViewCell
 
 - (void)configureCellWithBook:(Book *)book {
+    [self.bookImageView sd_setImageWithURL:[NSURL URLWithString:book.imageSource]];
     [self.titleLabel setText:book.title];
     [self.subTitleLabel setText:book.subtitle];
     [self.priceLabel setText:book.price];
