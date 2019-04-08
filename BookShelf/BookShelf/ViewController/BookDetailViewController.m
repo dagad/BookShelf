@@ -43,9 +43,6 @@
 
     [[HistoryContainer shared] addBook:self.book];
 
-    self.isBookmarked = [[BookmarkContainer shared] isRegistered:self.book];
-    [self setBookmarkIcon:self.isBookmarked];
-
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleBookmark)];
     [self.bookmarkImageView addGestureRecognizer:gesture];
 
@@ -55,6 +52,12 @@
 
     [self setTitle:@"Detail"];
     [self requestBookDetail];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.isBookmarked = [[BookmarkContainer shared] isRegistered:self.book];
+    [self setBookmarkIcon:self.isBookmarked];
 }
 
 - (void)requestBookDetail {
