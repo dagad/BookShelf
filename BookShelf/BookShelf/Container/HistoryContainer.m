@@ -47,14 +47,7 @@
 }
 
 - (void)remove:(Book *)book {
-    __weak __typeof(self) weakSelf = self;
     [self.markedBooks removeObject:book];
-    [self.markedBooks enumerateObjectsUsingBlock:^(Book *item, NSUInteger idx, BOOL *stop) {
-        if(book.isbn13 == item.isbn13) {
-            [weakSelf.markedBooks removeObjectAtIndex:idx];
-            *stop = YES;
-        }
-    }];
 }
 
 - (BOOL)isContain:(Book *)book {
