@@ -1,27 +1,27 @@
 //
-//  BookmarkContainer.m
+//  HistoryContainer.m
 //  BookShelf
 //
 //  Created by dagad on 08/04/2019.
 //  Copyright © 2019 dagad. All rights reserved.
 //
 
-#import "BookmarkContainer.h"
+#import "HistoryContainer.h"
 #import "BookShelf-Swift.h"
 
-@interface BookmarkContainer ()
+@interface HistoryContainer ()
 
 @property (strong, nonatomic) NSMutableArray *markedBooks;
 
 @end
 
-@implementation BookmarkContainer
+@implementation HistoryContainer
 
-+ (instancetype) shared {
++ (instancetype)shared {
     static dispatch_once_t token;
-    static BookmarkContainer *instance = nil;
+    static HistoryContainer *instance = nil;
     dispatch_once(&token, ^{
-        instance = [[BookmarkContainer alloc] init];
+        instance = [[HistoryContainer alloc] init];
     });
 
     return instance;
@@ -35,11 +35,14 @@
     return self;
 }
 
-- (void)registerBook:(Book *)book {
+- (void)addBook:(Book *)book {
+    if([self isContain:book]) {
+        [self remove:book];
+    }
     [self.markedBooks insertObject:book atIndex:0];
 }
 
-- (void)unRegisterBook:(Book *)book {
+- (void)remove:(Book *)book {
     __weak __typeof(self) weakSelf = self;
     [self.markedBooks removeObject:book];
     [self.markedBooks enumerateObjectsUsingBlock:^(Book *item, NSUInteger idx, BOOL *stop) {
@@ -50,7 +53,7 @@
     }];
 }
 
-- (BOOL)isRegistered:(Book *)book {
+- (BOOL)isContain:(Book *)book {
     for(Book *item in self.markedBooks) {
         if([item isEqual:book]) {
             return YES;
