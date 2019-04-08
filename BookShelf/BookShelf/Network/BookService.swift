@@ -15,17 +15,22 @@ class BookService: NSObject {
     static let shared = BookService()
     private let provider = MoyaProvider<BookAPI>()
 
-    func requestNewBooks(success: @escaping ([Book]) -> Void, failure: @escaping (Error) -> Void) {
+    func requestNewBooks(success: @escaping ([Book]?) -> Void, failure: @escaping (Error) -> Void) {
         provider.request(.new) { result in
             switch result {
             case let .success(response):
-                do {
-                    let books = try response.map(to: [Book].self, keyPath: "books")
+                if let books = try? response.map(to: [Book].self, keyPath: "books") {
                     success(books)
-                } catch {
-                    print("\(error)")
-                    failure(error)
+                } else {
+                    success(nil)
                 }
+//                do {
+//                    let books = try response.map(to: [Book].self, keyPath: "books")
+//                    success(books)
+//                } catch {
+//                    print("\(error)")
+//                    failure(error)
+//                }
             case let .failure(error):
                 print(error)
                 failure(error)
@@ -51,16 +56,14 @@ class BookService: NSObject {
         }
     }
     
-    func searchBooksBy(keyword: String, page: String, success: @escaping ([Book]) -> Void, failure: @escaping (Error) -> Void) {
+    func searchBooksBy(keyword: String, page: String, success: @escaping ([Book]?) -> Void, failure: @escaping (Error) -> Void) {
         provider.request(.search(keyword: keyword, page: page)) { result in
             switch result {
             case let .success(response):
-                do {
-                    let books = try response.map(to: [Book].self, keyPath: "books")
+                if let books = try? response.map(to: [Book].self, keyPath: "books") {
                     success(books)
-                } catch {
-                    print("\(error)")
-                    failure(error)
+                } else {
+                    success(nil)
                 }
             case let .failure(error):
                 print(error)

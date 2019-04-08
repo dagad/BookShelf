@@ -9,6 +9,7 @@
 #import "NewViewController.h"
 #import "BookCollectionViewCell.h"
 #import "BookDetailViewController.h"
+#import "UIAlertController+Error.h"
 #import "BookShelf-Swift.h"
 
 @interface NewViewController ()
@@ -37,10 +38,14 @@
 - (void)reloadBooks {
     __weak __typeof(self) weakSelf = self;
     [BookService.shared requestNewBooksWithSuccess:^(NSArray<Book *> *books) {
-        weakSelf.books = [NSArray arrayWithArray:books];
-        [weakSelf.collectionView reloadData];
+        if(books) {
+            weakSelf.books = [NSArray arrayWithArray:books];
+            [weakSelf.collectionView reloadData];
+        } else {
+            // Show Empty Result Message
+        }
     } failure:^(NSError *error) {
-        // Error Handling
+        [UIAlertController showErrorMessage];
     }];
 }
 

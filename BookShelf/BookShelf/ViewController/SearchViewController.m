@@ -9,6 +9,7 @@
 #import "SearchViewController.h"
 #import "BookDetailViewController.h"
 #import "BookCollectionViewCell.h"
+#import "UIAlertController+Error.h"
 #import "BookShelf-Swift.h"
 
 @interface SearchViewController ()
@@ -49,6 +50,7 @@ NSInteger currentPage = 0;
         [weakSelf.collectionView reloadData];
     } failure:^(NSError *error) {
         // Error Handling
+        [UIAlertController showErrorMessage];
     }];
 }
 - (IBAction)search:(id)sender {

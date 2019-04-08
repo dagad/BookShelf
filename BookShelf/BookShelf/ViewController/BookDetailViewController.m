@@ -9,6 +9,7 @@
 #import "BookDetailViewController.h"
 #import "BookmarkContainer.h"
 #import "HistoryContainer.h"
+#import "UIAlertController+Error.h"
 #import <SDWebImage/SDWebImage.h>
 #import "BookShelf-Swift.h"
 
@@ -66,6 +67,7 @@
         [weakSelf setBookData: book];
     } failure:^(NSError *error) {
         // Error Handling
+        [UIAlertController showErrorMessage];
     }];
 }
 
