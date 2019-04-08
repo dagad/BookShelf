@@ -35,6 +35,10 @@
     return self;
 }
 
+- (NSArray<Book *> *)getMarkedBooks {
+    return [NSArray arrayWithArray:self.markedBooks];
+}
+
 - (void)registerBook:(Book *)book {
     [self.markedBooks insertObject:book atIndex:0];
 }

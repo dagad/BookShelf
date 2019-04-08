@@ -8,6 +8,7 @@
 
 #import "BookDetailViewController.h"
 #import "BookmarkContainer.h"
+#import "HistoryContainer.h"
 #import <SDWebImage/SDWebImage.h>
 #import "BookShelf-Swift.h"
 
@@ -39,6 +40,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [[HistoryContainer shared] addBook:self.book];
 
     self.isBookmarked = [[BookmarkContainer shared] isRegistered:self.book];
     [self setBookmarkIcon:self.isBookmarked];

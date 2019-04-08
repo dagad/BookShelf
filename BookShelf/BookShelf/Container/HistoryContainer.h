@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HistoryContainer : NSObject
 
 + (instancetype)shared;
+- (NSArray<Book *> *)getViewedBooks;
 - (void)addBook:(Book *)book;
 
 @end

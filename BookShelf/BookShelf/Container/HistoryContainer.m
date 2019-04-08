@@ -35,6 +35,10 @@
     return self;
 }
 
+- (NSArray<Book *> *)getViewedBooks {
+    return [NSArray arrayWithArray:self.markedBooks];
+}
+
 - (void)addBook:(Book *)book {
     if([self isContain:book]) {
         [self remove:book];

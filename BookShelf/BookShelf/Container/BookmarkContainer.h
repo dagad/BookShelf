@@ -13,6 +13,7 @@
 @interface BookmarkContainer : NSObject
 
 + (instancetype)shared;
+- (NSArray<Book *> *)getMarkedBooks;
 - (void)registerBook:(Book *)book;
 - (void)unRegisterBook:(Book *)book;
 - (BOOL)isRegistered:(Book *)book;
