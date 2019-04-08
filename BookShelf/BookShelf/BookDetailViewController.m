@@ -16,7 +16,7 @@
 
 @implementation BookDetailViewController
 
-- (void)reloadBook:(Book *)book {
+- (void)setBookData:(Book *)book {
     [self.bookImageView sd_setImageWithURL:[NSURL URLWithString:book.imageSource]];
     [self.titleLabel setText:book.title];
     [self.subTitleLabel setText:book.subtitle];
@@ -31,7 +31,7 @@
     [self.isbn10Label setText:book.isbn10];
     [self.isbn13Label setText:book.isbn13];
 
-    [self.descriptionLabel setText:book.description];
+    [self.descriptionLabel setText:book.desc];
 }
 
 - (void)viewDidLoad {
@@ -46,7 +46,7 @@
 - (void)requestBookDetail {
     __weak __typeof(self) weakSelf = self;
     [BookService.shared requestBookDetailWithIsbn:self.book.isbn13 success:^(Book * book) {
-        [weakSelf reloadBook: book];
+        [weakSelf setBookData: book];
     } failure:^(NSError *error) {
         // Error Handling
     }];
