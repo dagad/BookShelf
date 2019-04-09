@@ -55,10 +55,25 @@
 }
 
 - (void)createTable {
+    NSString *bookMarkTable = @"CREATE TABLE IF NOT EXISTS BookmarkTable (\
+    error TEXT,\
+    title TEXT,\
+    subtitle TEXT,\
+    authors TEXT,\
+    publisher TEXT,\
+    isbn10 TEXT,\
+    isbn13 TEXT,\
+    pages TEXT,\
+    year TEXT,\
+    rating TEXT,\
+    description TEXT,\
+    price TEXT,\
+    imageSource TEXT, \
+    url TEXT, \
+    pdf BLOB, \
+    UNIQUE(isbn10, isbn13) ON CONFLICT REPLACE);";
 
-    NSString *dropTable = @"DROP TABLE BookTable;";
-
-    NSString *bookTable = @"CREATE TABLE IF NOT EXISTS BookTable (\
+    NSString *historyTable = @"CREATE TABLE IF NOT EXISTS HistoryTable (\
     error TEXT,\
     title TEXT,\
     subtitle TEXT,\
@@ -77,7 +92,8 @@
     UNIQUE(isbn10, isbn13) ON CONFLICT REPLACE);";
 
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        [db executeUpdate:bookTable];
+        [db executeUpdate:bookMarkTable];
+        [db executeUpdate:historyTable];
     }];
 }
 
@@ -85,27 +101,61 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-- (void)insertBook:(Book *)book {
-
+// MARK: - Bookmark
+- (void)insertBookmark:(Book *)book {
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         NSData *pdfData = [NSKeyedArchiver archivedDataWithRootObject:book.pdf];
-        NSString *sql = @"INSERT OR REPLACE INTO BookTable(error, title, subtitle, authors, publisher, isbn10, isbn13, pages, year, rating, description, price, imageSource, url, pdf) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        NSString *sql = @"INSERT OR REPLACE INTO BookmarkTable(error, title, subtitle, authors, publisher, isbn10, isbn13, pages, year, rating, description, price, imageSource, url, pdf) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         [db executeUpdate:sql, book.error, book.title, book.subtitle, book.authors, book.publisher,
          book.isbn10, book.isbn13, book.pages, book.year, book. rating, book.desc, book.price, book.imageSource, book.url, pdfData];
     }];
 }
 
-- (void)deleteBook:(Book *)book {
-    NSString *sql = [NSString stringWithFormat:@"DELETE FROM BookTable WHERE isbn10 = %@ AND isbn13 = %@", book.isbn10, book.isbn13];
+- (void)deleteBookmark:(Book *)book {
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM BookmarkTable WHERE isbn10 = %@ AND isbn13 = %@", book.isbn10, book.isbn13];
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         [db executeUpdate:sql];
     }];
 }
 
-- (NSArray<Book *> *)getBooks {
+- (NSArray<Book *> *)getBookmarkList {
     NSMutableArray<Book *> *books = [NSMutableArray array];
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM BookTable"];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM BookmarkTable"];
+    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        FMResultSet *result = [db executeQuery:sql];
+
+        while([result next]) {
+            BookData *data = [[BookData alloc] initWithResult:result];
+            Book *book = [data createBook];
+            [books addObject:book];
+        }
+        [result close];
+    }];
+    return books;
+}
+
+// MARK: - History
+- (void)insertHistory:(Book *)book {
+    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        NSData *pdfData = [NSKeyedArchiver archivedDataWithRootObject:book.pdf];
+        NSString *sql = @"INSERT OR REPLACE INTO HistoryTable(error, title, subtitle, authors, publisher, isbn10, isbn13, pages, year, rating, description, price, imageSource, url, pdf) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        [db executeUpdate:sql, book.error, book.title, book.subtitle, book.authors, book.publisher,
+         book.isbn10, book.isbn13, book.pages, book.year, book. rating, book.desc, book.price, book.imageSource, book.url, pdfData];
+    }];
+}
+
+- (void)deleteHistory:(Book *)book {
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM HistoryTable WHERE isbn10 = %@ AND isbn13 = %@", book.isbn10, book.isbn13];
+    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        [db executeUpdate:sql];
+    }];
+}
+
+- (NSArray<Book *> *)getHistoryList {
+    NSMutableArray<Book *> *books = [NSMutableArray array];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM HistoryTable"];
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         FMResultSet *result = [db executeQuery:sql];
 

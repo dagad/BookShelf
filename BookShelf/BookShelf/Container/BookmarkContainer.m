@@ -42,12 +42,12 @@
 
 - (void)registerBook:(Book *)book {
     [self.markedBooks insertObject:book atIndex:0];
-    [[BookDataCenter shared] insertBook:book];
+    [[BookDataCenter shared] insertBookmark:book];
 }
 
 - (void)unRegisterBook:(Book *)book {
     [self.markedBooks removeObject:book];
-    [[BookDataCenter shared] deleteBook:book];
+    [[BookDataCenter shared] deleteBookmark:book];
 }
 
 - (BOOL)isRegistered:(Book *)book {
@@ -64,7 +64,7 @@
 }
 
 - (NSMutableArray<Book *> *)reStoreData {
-    NSArray *books = [[BookDataCenter shared] getBooks];
+    NSArray *books = [[BookDataCenter shared] getBookmarkList];
     return [NSMutableArray arrayWithArray:books];
 }
 

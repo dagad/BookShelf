@@ -14,8 +14,14 @@
 
 + (instancetype)shared;
 
-- (void)insertBook:(Book *)book;
-- (void)deleteBook:(Book *)book;
-- (NSArray<Book *> *)getBooks;
+- (void)insertBookmark:(Book *)book;
+- (void)deleteBookmark:(Book *)book;
+- (NSArray<Book *> *)getBookmarkList;
+
+- (void)insertHistory:(Book *)book;
+- (void)deleteHistory:(Book *)book;
+- (NSArray<Book *> *)getHistoryList;
+
+
 
 @end
