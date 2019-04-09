@@ -179,13 +179,13 @@
 		2B9FA2412257306C00BAF875 /* BookShelf */ = {
 			isa = PBXGroup;
 			children = (
+				2B9FA27A2257322100BAF875 /* Network */,
 				42028FE2225C1216005E6685 /* Database */,
-				4A11C4CA225BE62A0031317A /* Extension */,
-				2B912DF8225B44E90016655E /* Cell */,
+				4A11C4CA225BE62A0031317A /* Category */,
 				2B912DF7225B44D00016655E /* ViewController */,
+				2B912DF8225B44E90016655E /* Cell */,
 				2B912DF6225B44BD0016655E /* Container */,
 				4A16619A225A21D0004A39D9 /* Model */,
-				2B9FA27A2257322100BAF875 /* Network */,
 				2B9FA2422257306C00BAF875 /* AppDelegate.h */,
 				2B9FA2432257306C00BAF875 /* AppDelegate.m */,
 				2B9FA24B2257306C00BAF875 /* Main.storyboard */,
@@ -210,8 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				2B9FA27C2257323500BAF875 /* BookAPI.swift */,
-				2B9FA27B2257323500BAF875 /* BookShelf-Bridging-Header.h */,
 				2B9FA27E2257344300BAF875 /* BookService.swift */,
+				2B9FA27B2257323500BAF875 /* BookShelf-Bridging-Header.h */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -225,13 +225,13 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
-		4A11C4CA225BE62A0031317A /* Extension */ = {
+		4A11C4CA225BE62A0031317A /* Category */ = {
 			isa = PBXGroup;
 			children = (
 				4A11C4CF225BEB3D0031317A /* UIAlertController+Error.h */,
 				4A11C4D0225BEB3D0031317A /* UIAlertController+Error.m */,
 			);
-			path = Extension;
+			path = Category;
 			sourceTree = "<group>";
 		};
 		4A16619A225A21D0004A39D9 /* Model */ = {
