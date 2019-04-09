@@ -7,6 +7,7 @@
 //
 
 #import "BookmarkContainer.h"
+#import "BookDataCenter.h"
 #import "BookShelf-Swift.h"
 
 @interface BookmarkContainer ()
@@ -41,10 +42,12 @@
 
 - (void)registerBook:(Book *)book {
     [self.markedBooks insertObject:book atIndex:0];
+    [[BookDataCenter shared] insertBook:book];
 }
 
 - (void)unRegisterBook:(Book *)book {
     [self.markedBooks removeObject:book];
+    [[BookDataCenter shared] deleteBook:book];
 }
 
 - (BOOL)isRegistered:(Book *)book {
@@ -61,7 +64,8 @@
 }
 
 - (NSMutableArray<Book *> *)reStoreData {
-    return [NSMutableArray array];
+    NSArray *books = [[BookDataCenter shared] getBooks];
+    return [NSMutableArray arrayWithArray:books];
 }
 
 @end

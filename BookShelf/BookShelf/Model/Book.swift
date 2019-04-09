@@ -6,27 +6,30 @@
 //  Copyright © 2019 dagad. All rights reserved.
 //
 
-import Foundation
 import Mapper
 
 @objcMembers
 class Book: NSObject, Mappable {
-    
-    let error: String
-    let title: String
-    let subtitle: String
-    let authors: String
-    let publisher: String
-    let isbn10: String
-    let isbn13: String
-    let pages: String
-    let year: String
-    let rating: String
-    let desc: String
-    let price: String
-    let imageSource: String
-    let url: String
-    let pdf: [String: String]
+
+    var error: String = ""
+    var title: String = ""
+    var subtitle: String = ""
+    var authors: String = ""
+    var publisher: String = ""
+    var isbn10: String = ""
+    var isbn13: String = ""
+    var pages: String = ""
+    var year: String = ""
+    var rating: String = ""
+    var desc: String = ""
+    var price: String = ""
+    var imageSource: String = ""
+    var url: String = ""
+    var pdf: [String: String] = [String: String]()
+
+    override init() {
+        super.init()
+    }
     
     required init(map: Mapper) throws {
         error = map.optionalFrom("error") ?? ""

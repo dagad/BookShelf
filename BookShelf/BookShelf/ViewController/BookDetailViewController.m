@@ -22,6 +22,7 @@
 @implementation BookDetailViewController
 
 - (void)setBookData:(Book *)book {
+    self.book = book;
     [self.bookImageView sd_setImageWithURL:[NSURL URLWithString:book.imageSource]];
     [self.titleLabel setText:book.title];
     [self.subTitleLabel setText:book.subtitle];
@@ -42,10 +43,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [[HistoryContainer shared] addBook:self.book];
-
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleBookmark)];
     [self.bookmarkImageView addGestureRecognizer:gesture];
+    [self.bookmarkImageView setHidden:YES];
 
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = YES;
@@ -64,7 +64,9 @@
 - (void)requestBookDetail {
     __weak __typeof(self) weakSelf = self;
     [BookService.shared requestBookDetailWithIsbn:self.book.isbn13 success:^(Book * book) {
+        [[HistoryContainer shared] addBook:book];
         [weakSelf setBookData: book];
+        [weakSelf.bookmarkImageView setHidden:NO];
     } failure:^(NSError *error) {
         // Error Handling
         [UIAlertController showErrorMessage];

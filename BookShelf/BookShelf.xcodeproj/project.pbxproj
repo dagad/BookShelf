@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B912DF2225B2E3A0016655E /* BookmarkContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912DF1225B2E3A0016655E /* BookmarkContainer.m */; };
 		2B912DF5225B41EE0016655E /* HistoryContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912DF4225B41EE0016655E /* HistoryContainer.m */; };
+		2B912E3A225C64940016655E /* BookData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912E39225C64940016655E /* BookData.m */; };
 		2B9FA2442257306C00BAF875 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA2432257306C00BAF875 /* AppDelegate.m */; };
 		2B9FA24D2257306C00BAF875 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B9FA24B2257306C00BAF875 /* Main.storyboard */; };
 		2B9FA24F2257306D00BAF875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B9FA24E2257306D00BAF875 /* Assets.xcassets */; };
@@ -48,6 +49,9 @@
 		2B912DF1225B2E3A0016655E /* BookmarkContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkContainer.m; sourceTree = "<group>"; };
 		2B912DF3225B41EE0016655E /* HistoryContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryContainer.h; sourceTree = "<group>"; };
 		2B912DF4225B41EE0016655E /* HistoryContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryContainer.m; sourceTree = "<group>"; };
+		2B912E38225C64940016655E /* BookData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookData.h; sourceTree = "<group>"; };
+		2B912E39225C64940016655E /* BookData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookData.m; sourceTree = "<group>"; };
+		2B912E3B225C655A0016655E /* BookDataCenterEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookDataCenterEnum.h; sourceTree = "<group>"; };
 		2B9FA23F2257306C00BAF875 /* BookShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B9FA2422257306C00BAF875 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2B9FA2432257306C00BAF875 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 			children = (
 				42028FE3225C1239005E6685 /* BookDataCenter.h */,
 				42028FE4225C1239005E6685 /* BookDataCenter.m */,
+				2B912E3B225C655A0016655E /* BookDataCenterEnum.h */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -238,6 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				4A166198225A21AC004A39D9 /* Book.swift */,
+				2B912E38225C64940016655E /* BookData.h */,
+				2B912E39225C64940016655E /* BookData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -450,6 +457,7 @@
 				2B9FA2552257306D00BAF875 /* main.m in Sources */,
 				42028FDF225ABAA8005E6685 /* BookCollectionViewCell.m in Sources */,
 				2B9FA27F2257344300BAF875 /* BookService.swift in Sources */,
+				2B912E3A225C64940016655E /* BookData.m in Sources */,
 				2B9FA27D2257323500BAF875 /* BookAPI.swift in Sources */,
 				2B9FA2782257320B00BAF875 /* BookDetailViewController.m in Sources */,
 				4A166199225A21AC004A39D9 /* Book.swift in Sources */,
@@ -628,6 +636,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BookShelf/Network/BookShelf-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -650,6 +659,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dagad.bookshelf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BookShelf/Network/BookShelf-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

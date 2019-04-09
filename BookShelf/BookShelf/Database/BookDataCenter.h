@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class Book;
+
 @interface BookDataCenter : NSObject
 
 + (instancetype)shared;
+
+- (void)insertBook:(Book *)book;
+- (void)deleteBook:(Book *)book;
+- (NSArray<Book *> *)getBooks;
 
 @end
