@@ -28,6 +28,8 @@
 		42028FE0225ABAA8005E6685 /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42028FDE225ABAA8005E6685 /* BookCollectionViewCell.xib */; };
 		42028FE5225C1239005E6685 /* BookDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 42028FE4225C1239005E6685 /* BookDataCenter.m */; };
 		4A11C4D1225BEB3D0031317A /* UIAlertController+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A11C4D0225BEB3D0031317A /* UIAlertController+Error.m */; };
+		4A11C4D5225E8DDE0031317A /* Fetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A11C4D4225E8DDE0031317A /* Fetcher.m */; };
+		4A145CDC225E91200062E93C /* BookFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145CDB225E91200062E93C /* BookFetcher.swift */; };
 		4A166199225A21AC004A39D9 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A166198225A21AC004A39D9 /* Book.swift */; };
 		52A40459D8A956E2CF4E506F /* Pods_BookShelf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F80ECC036CC9D282A300FFC /* Pods_BookShelf.framework */; };
 		BEF3A7BDF6238A25ECD2D85C /* Pods_BookShelfTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170D8AA7F76A3A1D460B9D6D /* Pods_BookShelfTests.framework */; };
@@ -85,6 +87,9 @@
 		42028FE4225C1239005E6685 /* BookDataCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookDataCenter.m; sourceTree = "<group>"; };
 		4A11C4CF225BEB3D0031317A /* UIAlertController+Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Error.h"; sourceTree = "<group>"; };
 		4A11C4D0225BEB3D0031317A /* UIAlertController+Error.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Error.m"; sourceTree = "<group>"; };
+		4A11C4D3225E8DDE0031317A /* Fetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fetcher.h; sourceTree = "<group>"; };
+		4A11C4D4225E8DDE0031317A /* Fetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fetcher.m; sourceTree = "<group>"; };
+		4A145CDB225E91200062E93C /* BookFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFetcher.swift; sourceTree = "<group>"; };
 		4A166198225A21AC004A39D9 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		4D779B24B0FC41C4E519A135 /* Pods-BookShelfTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookShelfTests.release.xcconfig"; path = "Target Support Files/Pods-BookShelfTests/Pods-BookShelfTests.release.xcconfig"; sourceTree = "<group>"; };
 		60087FFC473A39C022F7CC3A /* Pods-BookShelf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookShelf.release.xcconfig"; path = "Target Support Files/Pods-BookShelf/Pods-BookShelf.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +188,7 @@
 		2B9FA2412257306C00BAF875 /* BookShelf */ = {
 			isa = PBXGroup;
 			children = (
+				4A11C4D2225E8CBF0031317A /* Fetcher */,
 				2B9FA27A2257322100BAF875 /* Network */,
 				42028FE2225C1216005E6685 /* Database */,
 				4A11C4CA225BE62A0031317A /* Category */,
@@ -237,6 +243,16 @@
 				4A11C4D0225BEB3D0031317A /* UIAlertController+Error.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		4A11C4D2225E8CBF0031317A /* Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				4A11C4D3225E8DDE0031317A /* Fetcher.h */,
+				4A11C4D4225E8DDE0031317A /* Fetcher.m */,
+				4A145CDB225E91200062E93C /* BookFetcher.swift */,
+			);
+			path = Fetcher;
 			sourceTree = "<group>";
 		};
 		4A16619A225A21D0004A39D9 /* Model */ = {
@@ -447,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A145CDC225E91200062E93C /* BookFetcher.swift in Sources */,
 				2B9FA26B225731C000BAF875 /* NewViewController.m in Sources */,
 				2B9FA271225731D000BAF875 /* BookmarkViewController.m in Sources */,
 				2B9FA2442257306C00BAF875 /* AppDelegate.m in Sources */,
@@ -458,6 +475,7 @@
 				42028FDF225ABAA8005E6685 /* BookCollectionViewCell.m in Sources */,
 				2B9FA27F2257344300BAF875 /* BookService.swift in Sources */,
 				2B912E3A225C64940016655E /* BookData.m in Sources */,
+				4A11C4D5225E8DDE0031317A /* Fetcher.m in Sources */,
 				2B9FA27D2257323500BAF875 /* BookAPI.swift in Sources */,
 				2B9FA2782257320B00BAF875 /* BookDetailViewController.m in Sources */,
 				4A166199225A21AC004A39D9 /* Book.swift in Sources */,
