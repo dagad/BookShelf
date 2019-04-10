@@ -7,19 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookShelf-Swift.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface SearchViewController : UIViewController<UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SearchViewController : UIViewController<UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDelegate, BookFetcherDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewBottomConstraint;
 
-@property (strong, nonatomic) NSArray *books;
-
 @end
-
-NS_ASSUME_NONNULL_END

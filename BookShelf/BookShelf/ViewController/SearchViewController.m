@@ -10,15 +10,13 @@
 #import "BookDetailViewController.h"
 #import "BookCollectionViewCell.h"
 #import "UIAlertController+Error.h"
-#import "BookShelf-Swift.h"
 
 @interface SearchViewController ()
-
+@property (strong, nonatomic) NSString *keyword;
+@property (strong, nonatomic) BookFetcher *fetcher;
 @end
 
 @implementation SearchViewController
-
-NSInteger currentPage = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,28 +33,12 @@ NSInteger currentPage = 0;
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = YES;
     }
-
+    
+    self.fetcher.delegate = self;
     self.searchTextField.delegate = self;
-
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"BookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"bookcell"];
-}
-
-- (void)searchKeyword:(NSString *)keyword page:(NSString *)page {
-    __weak __typeof(self) weakSelf = self;
-    [BookService.shared searchBooksByKeyword:keyword page:page success:^(NSArray<Book *> *books) {
-        weakSelf.books = books;
-        [weakSelf.collectionView reloadData];
-    } failure:^(NSError *error) {
-        // Error Handling
-        [UIAlertController showErrorMessage];
-    }];
-}
-- (IBAction)search:(id)sender {
-    NSString *keyword = self.searchTextField.text;
-    [self.searchTextField resignFirstResponder];
-    [self searchKeyword:keyword page:[@(currentPage) stringValue]];
 }
 
 // MARK: - KeyboardEvent
@@ -79,26 +61,42 @@ NSInteger currentPage = 0;
 
 // MARK: - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSString *keyword = self.searchTextField.text;
-    [self.searchTextField resignFirstResponder];
-    [self searchKeyword:keyword page:[@(currentPage) stringValue]];
+    [self searchProcess];
     return YES;
+}
+
+// MARK: - SearchAction
+- (IBAction)search:(id)sender {
+    [self searchProcess];
+}
+
+- (void)searchProcess {
+    self.keyword = self.searchTextField.text;
+    [self.searchTextField resignFirstResponder];
+    [self.fetcher clear];
+    self.fetcher.searchKeyword = self.keyword;
+    [self.collectionView reloadData];
 }
 
 // MARK: - UICollectionViewDataSource
 - (UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     BookCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"bookcell" forIndexPath:indexPath];
-    [cell configureCellWithBook:[self.books objectAtIndex:indexPath.item]];
+    [cell configureCellWithBook:[self.fetcher bookAtIndexPath:indexPath]];
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.books count];
+    return self.fetcher.totalCount;
+}
+
+// MARK - UICollectionViewDataSourcePrefetching
+- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    [self.fetcher fetchBookWithKeyword:self.keyword searchitemsAt:indexPaths];
 }
 
 // MARK: - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    Book *touchedBook = [self.books objectAtIndex:indexPath.item];
+    Book *touchedBook = [self.fetcher bookAtIndexPath:indexPath];
     BookDetailViewController *bookDetailVC = [[BookDetailViewController alloc] init];
     [bookDetailVC setBook:touchedBook];
     [self.navigationController pushViewController:bookDetailVC animated:YES];
@@ -111,6 +109,17 @@ NSInteger currentPage = 0;
     return cellSize;
 }
 
+// MARK: - BookFetcherDelegate
+- (void)fetcher:(BookFetcher * _Nonnull)fetcher didFetchItemsAt:(NSArray<NSIndexPath *> * _Nonnull)indexPaths {
+    [self.collectionView reloadItemsAtIndexPaths:indexPaths];
+}
 
+- (void)fetcher:(BookFetcher * _Nonnull)fetcher didUpdateTotalCount:(NSInteger)totalCount {
+    [self.collectionView reloadData];
+}
+
+- (void)fetcher:(BookFetcher * _Nonnull)fetcher didOccur:(NSError * _Nonnull)error {
+    NSLog(@"Fetcher Error: %@", error.description);
+}
 
 @end

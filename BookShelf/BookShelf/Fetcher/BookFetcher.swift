@@ -9,16 +9,17 @@
 import Foundation
 import Moya
 
-protocol FetcherDelegate: class {
-    func fetcher(_ fetcher: Fetcher, didFetchItemsAt indexPaths: [IndexPath])
-    func fetcher(_ fetcher: Fetcher, didUpdateTotalCount totalCount: Int)
-    func fetcher(_ fetcher: Fetcher, didOccur error: Error)
+@objc protocol BookFetcherDelegate: class {
+    func fetcher(_ fetcher: BookFetcher, didFetchItemsAt indexPaths: [IndexPath])
+    func fetcher(_ fetcher: BookFetcher, didUpdateTotalCount totalCount: Int)
+    func fetcher(_ fetcher: BookFetcher, didOccur error: Error)
 }
 
-class Fetcher: NSObject {
+@objcMembers
+class BookFetcher: NSObject {
     
     enum FetchState: Equatable {
-        static func == (lhs: Fetcher.FetchState, rhs: Fetcher.FetchState) -> Bool {
+        static func == (lhs: BookFetcher.FetchState, rhs: BookFetcher.FetchState) -> Bool {
             switch (lhs, rhs) {
             case (fetching, fetching), (fetched, fetched), (failed, failed):
                 return true
@@ -42,7 +43,7 @@ class Fetcher: NSObject {
     let type: FetchType = .books
     var searchKeyword: String = ""
     
-    weak var delegate: FetcherDelegate?
+    weak var delegate: BookFetcherDelegate?
     
     private let service = BookService()
     private var states: [IndexPath: FetchState] = [:]
@@ -72,7 +73,7 @@ class Fetcher: NSObject {
         states = [:]
     }
     
-    func product(at indexPath: IndexPath) -> Book? {
+    func bookAtIndexPath(_ indexPath: IndexPath) -> Book? {
         if let state = states[indexPath] {
             switch state {
             case let .fetched(item):
@@ -101,7 +102,7 @@ class Fetcher: NSObject {
         }
     }
     
-    func fetch(_ keyword: String, searchitemsAt indexPaths: [IndexPath]) {
+    func fetchBookWithKeyword(_ keyword: String, searchitemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if isFetchableAt(indexPath) {
                 let page = Int(indexPath.item / fetchCount) + 1
@@ -121,8 +122,23 @@ class Fetcher: NSObject {
     }
 }
 
-// MARK: Fetch
-extension Fetcher {
+// MARK: - Search
+extension BookFetcher {
+    private func search(keyword: String, page: String) {
+        BookService.shared.searchBooksBy(keyword: keyword, page: page,
+                                         success: { [weak self] book in
+                                            guard let strongSelf = self else { return }
+                                            
+            self?.delegate?.fetcher(strongSelf, didFetchItemsAt: )
+        },
+                                         failure: { error in
+            
+        })
+    }
+}
+
+// MARK: - Fetch
+extension BookFetcher {
     private func fetch(page: Int, section: Int) {
         var request: Cancellable?
         
