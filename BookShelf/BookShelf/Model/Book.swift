@@ -69,8 +69,8 @@ class Book: NSObject, NSCopying, Mappable {
     }
 
     override func isEqual(_ object: Any?) -> Bool {
-        guard let target = object as? Book, target.isbn13.count > 0, isbn13.count > 0 else { return false }
-        if target.isbn13 == isbn13 {
+        guard let target = object as? Book else { return false }
+        if target.isbn13 == isbn13, target.isbn10 == isbn10 {
             return true
         } else {
             return false
