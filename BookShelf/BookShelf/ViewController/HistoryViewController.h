@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookCollectionViewCell.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface HistoryViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HistoryViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, BookCollectionViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *books;
 
 @end
 
-NS_ASSUME_NONNULL_END

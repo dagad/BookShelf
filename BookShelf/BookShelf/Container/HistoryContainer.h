@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shared;
 - (NSArray<Book *> *)getViewedBooks;
 - (void)addBook:(Book *)book;
+- (void)delete:(Book *)book;
 
 @end
 
