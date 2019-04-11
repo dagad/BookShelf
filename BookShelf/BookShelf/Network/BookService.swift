@@ -24,13 +24,6 @@ class BookService: NSObject {
                 } else {
                     success(nil)
                 }
-//                do {
-//                    let books = try response.map(to: [Book].self, keyPath: "books")
-//                    success(books)
-//                } catch {
-//                    print("\(error)")
-//                    failure(error)
-//                }
             case let .failure(error):
                 print(error)
                 failure(error)
