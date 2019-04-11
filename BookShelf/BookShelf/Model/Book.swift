@@ -9,7 +9,7 @@
 import Mapper
 
 @objcMembers
-class Book: NSObject, Mappable {
+class Book: NSObject, NSCopying, Mappable {
 
     var error: String = ""
     var title: String = ""
@@ -29,6 +29,25 @@ class Book: NSObject, Mappable {
 
     override init() {
         super.init()
+    }
+
+    convenience init(with book: Book) {
+        self.init()
+        error = book.error
+        title = book.title
+        subtitle = book.subtitle
+        authors = book.authors
+        publisher = book.publisher
+        isbn10 = book.isbn10
+        isbn13 = book.isbn13
+        pages = book.pages
+        year = book.year
+        rating = book.rating
+        desc = book.desc
+        price = book.price
+        imageSource = book.imageSource
+        url = book.url
+        pdf = book.pdf
     }
     
     required init(map: Mapper) throws {
@@ -57,5 +76,10 @@ class Book: NSObject, Mappable {
             return false
         }
     }
+
+    func copy(with zone: NSZone? = nil) -> Any {
+        return Book(with: self)
+    }
+
 }
 

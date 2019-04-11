@@ -75,9 +75,9 @@
 
 - (void)toggleBookmark {
     if(self.isBookmarked) {
-        [[BookmarkContainer shared] unRegisterBook:self.book];
+        [[BookmarkContainer shared] unRegisterBook:[self.book copy]];
     } else {
-        [[BookmarkContainer shared] registerBook:self.book];
+        [[BookmarkContainer shared] registerBook:[self.book copy]];
     }
     self.isBookmarked = !self.isBookmarked;
     [self setBookmarkIcon:self.isBookmarked];
