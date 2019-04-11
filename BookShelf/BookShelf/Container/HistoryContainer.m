@@ -7,6 +7,7 @@
 //
 
 #import "HistoryContainer.h"
+#import "BookDataCenter.h"
 #import "BookShelf-Swift.h"
 
 @interface HistoryContainer ()
@@ -41,13 +42,15 @@
 
 - (void)addBook:(Book *)book {
     if([self isContain:book]) {
-        [self remove:book];
+        [self delete:book];
     }
     [self.markedBooks insertObject:book atIndex:0];
+    [[BookDataCenter shared] insertHistory:book];
 }
 
-- (void)remove:(Book *)book {
+- (void)delete:(Book *)book {
     [self.markedBooks removeObject:book];
+    [[BookDataCenter shared] deleteHistory:book];
 }
 
 - (BOOL)isContain:(Book *)book {
@@ -64,7 +67,8 @@
 }
 
 - (NSMutableArray<Book *> *)reStoreData {
-    return [NSMutableArray array];
+    NSArray *books = [[BookDataCenter shared] getHistoryList];
+    return [NSMutableArray arrayWithArray:books];
 }
 
 @end
