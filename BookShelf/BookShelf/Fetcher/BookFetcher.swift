@@ -15,45 +15,38 @@ import Moya
     func fetcher(_ fetcher: BookFetcher, didOccur error: Error)
 }
 
+@objc enum FetchState: Int {
+    case fetching
+    case fetched
+    case failed
+}
+
+@objc enum FetchType: Int {
+    case books
+}
+
 @objcMembers
 class BookFetcher: NSObject {
-    
-    enum FetchState: Equatable {
-        static func == (lhs: BookFetcher.FetchState, rhs: BookFetcher.FetchState) -> Bool {
-            switch (lhs, rhs) {
-            case (fetching, fetching), (fetched, fetched), (failed, failed):
-                return true
-            default:
-                return false
-            }
-        }
-        
-        case fetching(request: Cancellable?)
-        case fetched(item: Book)
-        case failed
-    }
-    
-    enum FetchType {
-        case books
-    }
-    
+
     private(set) var totalCount = 0
     
     let fetchCount = 10
     let type: FetchType = .books
-    var searchKeyword: String = ""
     
     weak var delegate: BookFetcherDelegate?
     
     private let service = BookService()
     private var states: [IndexPath: FetchState] = [:]
+    private var books: [IndexPath: Book] = [:]
+    private var request: [IndexPath: Cancellable] = [:]
     
     init(type: FetchType, books: [Book] = []) {
         super.init()
         
         for (index, book) in books.enumerated() {
             let indexPath = IndexPath(item: index, section: 0)
-            states[indexPath] = .fetched(item: book)
+            self.states[indexPath] = .fetched
+            self.books[indexPath] = book
         }
     }
     
@@ -63,21 +56,22 @@ class BookFetcher: NSObject {
     
     func clear() {
         totalCount = 0
-        states.values.forEach { (state) in
-            if case let .fetching(cancellable) = state, let request = cancellable {
-                if !request.isCancelled {
-                    request.cancel()
-                }
+        for key in states.keys where states[key] == .fetching {
+            if let cancellable = request[key], !cancellable.isCancelled {
+                cancellable.cancel()
             }
         }
+
         states = [:]
+        books = [:]
+        request = [:]
     }
     
     func bookAtIndexPath(_ indexPath: IndexPath) -> Book? {
         if let state = states[indexPath] {
             switch state {
-            case let .fetched(item):
-                return item
+            case .fetched:
+                return books[indexPath]
             default:
                 return nil
             }
@@ -85,8 +79,8 @@ class BookFetcher: NSObject {
         return nil
     }
     
-    func state(at indexPath: IndexPath) -> FetchState? {
-        return states[indexPath]
+    func stateAtIndexPath(_ indexPath: IndexPath) -> FetchState {
+        return states[indexPath] ?? .failed
     }
     
     func isFetchableAt(_ indexPath: IndexPath) -> Bool {
@@ -102,21 +96,15 @@ class BookFetcher: NSObject {
         }
     }
     
-    func fetchBookWithKeyword(_ keyword: String, searchitemsAt indexPaths: [IndexPath]) {
+    func fetchBookWithKeyword(_ keyword: String, searchitemsAt indexPaths: [IndexPath]?) {
+        guard let indexPaths = indexPaths else {
+            search(keyword:keyword, page: "1")
+            return
+        }
         for indexPath in indexPaths {
             if isFetchableAt(indexPath) {
                 let page = Int(indexPath.item / fetchCount) + 1
-                fetch(page: page, section: indexPath.section)
-            }
-        }
-    }
-    
-    func cancelFetching(itemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            if let state = states[indexPath], case let .fetching(cancellable) = state, let request = cancellable {
-                if !request.isCancelled {
-                    request.cancel()
-                }
+                search(keyword:keyword, page: String(page))
             }
         }
     }
@@ -125,35 +113,34 @@ class BookFetcher: NSObject {
 // MARK: - Search
 extension BookFetcher {
     private func search(keyword: String, page: String) {
-        BookService.shared.searchBooksBy(keyword: keyword, page: page,
-                                         success: { [weak self] book in
-                                            guard let strongSelf = self else { return }
-                                            
-            self?.delegate?.fetcher(strongSelf, didFetchItemsAt: )
+        guard let pageIntValue = Int(page) else { return }
+        let cancellable = BookService.shared.searchBooksBy(keyword: keyword, page: page,
+                                         success: { [unowned self] bookList in
+                                            guard let bookList = bookList else { return }
+                                            let books = bookList.books
+                                            let newTotalCount = bookList.totalCount
+                                            if self.totalCount != Int(newTotalCount) {
+                                                self.totalCount = Int(newTotalCount) ?? 0
+                                                self.delegate?.fetcher(self, didUpdateTotalCount: self.totalCount)
+                                            }
+                                            var indexPaths: [IndexPath] = []
+                                            for (index, book) in books.enumerated() {
+                                                let indexPath = IndexPath(item: (pageIntValue - 1) * self.fetchCount + index, section: 0)
+                                                self.states[indexPath] = .fetched
+                                                self.books[indexPath] = book
+                                                indexPaths.append(indexPath)
+                                            }
+                                            self.delegate?.fetcher(self, didFetchItemsAt: indexPaths)
         },
                                          failure: { error in
-            
+                                            self.delegate?.fetcher(self, didOccur: error)
         })
-    }
-}
 
-// MARK: - Fetch
-extension BookFetcher {
-    private func fetch(page: Int, section: Int) {
-        var request: Cancellable?
-        
-        BookService.shared.searchBooksBy(keyword: searchKeyword, page: String(page), success: { book in
-            
-        }, failure: { error in
-            
-        })
-        
-        if let request = request {
-            for item in ((page - 1) * fetchCount)..<(page * fetchCount) {
-                let indexPath = IndexPath(item: item, section: section)
-                if states[indexPath] == nil {
-                    states[indexPath] = .fetching(request: request)
-                }
+        for item in ((pageIntValue - 1) * fetchCount)..<(pageIntValue * fetchCount) {
+            let indexPath = IndexPath(item: item, section: 0)
+            if states[indexPath] == nil {
+                states[indexPath] = .fetching
+                request[indexPath] = cancellable
             }
         }
     }

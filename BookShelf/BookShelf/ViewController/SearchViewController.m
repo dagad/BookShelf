@@ -33,9 +33,11 @@
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = YES;
     }
-    
+
+    self.fetcher = [[BookFetcher alloc] initWithType:FetchTypeBooks books:@[[[Book alloc] init]]];
     self.fetcher.delegate = self;
     self.searchTextField.delegate = self;
+    self.collectionView.prefetchDataSource = self;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"BookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"bookcell"];
@@ -74,14 +76,25 @@
     self.keyword = self.searchTextField.text;
     [self.searchTextField resignFirstResponder];
     [self.fetcher clear];
-    self.fetcher.searchKeyword = self.keyword;
-    [self.collectionView reloadData];
+    [self.fetcher fetchBookWithKeyword:self.keyword searchitemsAt:nil];
 }
 
 // MARK: - UICollectionViewDataSource
 - (UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     BookCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"bookcell" forIndexPath:indexPath];
-    [cell configureCellWithBook:[self.fetcher bookAtIndexPath:indexPath]];
+    FetchState state = [self.fetcher stateAtIndexPath:indexPath];
+    switch (state) {
+        case FetchStateFetching:
+            [cell configureCellWithBook:[[Book alloc] init]];
+            break;
+        case FetchStateFetched:
+            [cell configureCellWithBook:[self.fetcher bookAtIndexPath:indexPath]];
+            break;
+        case FetchStateFailed:
+            [cell configureCellWithBook:[[Book alloc] init]];
+            [self.fetcher fetchBookWithKeyword:self.keyword searchitemsAt:@[indexPath]];
+            break;
+    }
     return cell;
 }
 
@@ -96,10 +109,13 @@
 
 // MARK: - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    Book *touchedBook = [self.fetcher bookAtIndexPath:indexPath];
-    BookDetailViewController *bookDetailVC = [[BookDetailViewController alloc] init];
-    [bookDetailVC setBook:touchedBook];
-    [self.navigationController pushViewController:bookDetailVC animated:YES];
+    FetchState state = [self.fetcher stateAtIndexPath:indexPath];
+    if(state == FetchStateFetched) {
+        Book *touchedBook = [self.fetcher bookAtIndexPath:indexPath];
+        BookDetailViewController *bookDetailVC = [[BookDetailViewController alloc] init];
+        [bookDetailVC setBook:touchedBook];
+        [self.navigationController pushViewController:bookDetailVC animated:YES];
+    }
 }
 
 // MARK: - UICollectionViewFlowLayoutDelegate
@@ -111,7 +127,12 @@
 
 // MARK: - BookFetcherDelegate
 - (void)fetcher:(BookFetcher * _Nonnull)fetcher didFetchItemsAt:(NSArray<NSIndexPath *> * _Nonnull)indexPaths {
-    [self.collectionView reloadItemsAtIndexPaths:indexPaths];
+    NSIndexPath *lowestIndexPath = indexPaths.firstObject;
+    if([self.collectionView numberOfItemsInSection:0] >= lowestIndexPath.item) {
+        [self.collectionView reloadItemsAtIndexPaths:indexPaths];
+    } else {
+        NSLog(@"Invalid IndexPaths");
+    }
 }
 
 - (void)fetcher:(BookFetcher * _Nonnull)fetcher didUpdateTotalCount:(NSInteger)totalCount {

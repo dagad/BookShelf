@@ -56,8 +56,8 @@ class BookService: NSObject {
         }
     }
     
-    func searchBooksBy(keyword: String, page: String, success: @escaping (BookList?) -> Void, failure: @escaping (Error) -> Void) {
-        provider.request(.search(keyword: keyword, page: page)) { result in
+    func searchBooksBy(keyword: String, page: String, success: @escaping (BookList?) -> Void, failure: @escaping (Error) -> Void) -> Cancellable {
+        return provider.request(.search(keyword: keyword, page: page)) { result in
             switch result {
             case let .success(response):
                 if let bookList = try? response.map(to: BookList.self) {

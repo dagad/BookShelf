@@ -11,11 +11,11 @@ import Mapper
 @objcMembers
 class BookList: NSObject, Mappable {
     
-    var totalCount: Int = 0
+    var totalCount: String = "0"
     var books: [Book] = []
 
     required init(map: Mapper) throws {
-        totalCount = map.optionalFrom("total") ?? 0
+        totalCount = map.optionalFrom("total") ?? ""
         books = map.optionalFrom("books") ?? []
     }
 }
