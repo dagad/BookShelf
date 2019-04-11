@@ -71,6 +71,17 @@
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="10" left="0.0" bottom="10" right="20"/>
                                     </stackView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v63-h2-tf0">
+                                        <rect key="frame" x="381" y="0.0" width="44" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="Y8b-4M-kPO"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" image="delete"/>
+                                        <connections>
+                                            <action selector="delete:" destination="gTV-IL-0wX" eventType="touchUpInside" id="7Sb-DA-q7I"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -95,6 +106,7 @@
             <size key="customSize" width="338" height="150"/>
             <connections>
                 <outlet property="bookImageView" destination="Oh9-jb-bfP" id="tcN-Gw-apA"/>
+                <outlet property="deleteButton" destination="v63-h2-tf0" id="smU-83-Mqi"/>
                 <outlet property="isbnLabel" destination="DpE-Yg-65M" id="A3X-Z5-0JP"/>
                 <outlet property="priceLabel" destination="Raz-xP-V7I" id="Egs-UR-nz8"/>
                 <outlet property="subTitleLabel" destination="Qg7-S3-RLY" id="HvV-Gd-PmH"/>
@@ -103,4 +115,7 @@
             <point key="canvasLocation" x="135.50724637681159" y="155.02232142857142"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="delete" width="24" height="24"/>
+    </resources>
 </document>

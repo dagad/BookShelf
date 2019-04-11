@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class Book;
+
+@protocol BookCollectionViewCellDelegate;
 
 @interface BookCollectionViewCell : UICollectionViewCell
 
@@ -19,9 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *isbnLabel;
-
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) id<BookCollectionViewCellDelegate> delgate;
 - (void)configureCellWithBook:(Book *)book;
+- (void)setBookCellHidden:(BOOL)hidden;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@protocol BookCollectionViewCellDelegate <NSObject>
+- (void)bookCollectionViewCellDidDelete:(BookCollectionViewCell *)cell;
+@end

@@ -12,6 +12,14 @@
 
 @implementation BookCollectionViewCell
 
+- (void)setBookCellHidden:(BOOL)hidden {
+    if(self.delgate != nil) {
+        [self.deleteButton setHidden:hidden];
+    } else {
+        [self.deleteButton setHidden:hidden];
+    }
+}
+
 - (void)configureCellWithBook:(Book *)book {
     [self.bookImageView sd_setImageWithURL:[NSURL URLWithString:book.imageSource]];
     [self.titleLabel setText:book.title];
@@ -26,6 +34,10 @@
     [self.subTitleLabel setHidden:(self.subTitleLabel.text.length == 0)];
     [self.priceLabel setHidden:(self.priceLabel.text.length == 0)];
     [self.isbnLabel setHidden:(self.isbnLabel.text.length == 0)];
+}
+
+- (IBAction)delete:(id)sender {
+    [self.delgate bookCollectionViewCellDidDelete:self];
 }
 
 @end

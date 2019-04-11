@@ -32,13 +32,26 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self reloadCollectionView];
+}
+
+- (void)reloadCollectionView {
     self.books = [[BookmarkContainer shared] getMarkedBooks];
     [self.collectionView reloadData];
+}
+
+// MARK: - Edit
+- (void)deleteBookAtIndexPath:(NSIndexPath *)indexPath {
+    Book *book = [self.books objectAtIndex:indexPath.row];
+    [[BookmarkContainer shared] unRegisterBook:[book copy]];
+    self.books = [[BookmarkContainer shared] getMarkedBooks];
 }
 
 // MARK: - UICollectionViewDataSource
 - (UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     BookCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"bookcell" forIndexPath:indexPath];
+    cell.delgate = self;
+    [cell setBookCellHidden:NO];
     [cell configureCellWithBook:[self.books objectAtIndex:indexPath.item]];
     return cell;
 }
@@ -60,6 +73,13 @@
     CGRect screenSize = UIScreen.mainScreen.bounds;
     CGSize cellSize = CGSizeMake(screenSize.size.width, 105);
     return cellSize;
+}
+
+// MARK: - BookCollectionViewCellDelegate
+- (void)bookCollectionViewCellDidDelete:(BookCollectionViewCell *)cell {
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    [self deleteBookAtIndexPath:indexPath];
+    [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
 }
 
 @end
