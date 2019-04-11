@@ -40,6 +40,15 @@
     [self.collectionView reloadData];
 }
 
+-(void)setBooks:(NSArray *)books {
+    _books = books;
+    if ([books count] == 0) {
+        [self.collectionView setHidden:YES];
+    } else {
+        [self.collectionView setHidden:NO];
+    }
+}
+
 // MARK: - Edit
 - (void)deleteBookAtIndexPath:(NSIndexPath *)indexPath {
     Book *book = [self.books objectAtIndex:indexPath.row];

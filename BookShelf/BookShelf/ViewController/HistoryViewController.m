@@ -32,8 +32,21 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self reloadCollectionView];
+}
+
+- (void)reloadCollectionView {
     self.books = [[HistoryContainer shared] getViewedBooks];
     [self.collectionView reloadData];
+}
+
+-(void)setBooks:(NSArray *)books {
+    _books = books;
+    if ([books count] == 0) {
+        [self.collectionView setHidden:YES];
+    } else {
+        [self.collectionView setHidden:NO];
+    }
 }
 
 // MARK: - Edit

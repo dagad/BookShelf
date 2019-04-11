@@ -186,6 +186,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Bookmark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGl-qD-Ta9">
+                                <rect key="frame" x="144" y="436" width="126.5" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vRP-Ep-xnW">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -203,7 +209,9 @@
                             <constraint firstItem="vRP-Ep-xnW" firstAttribute="top" secondItem="ngr-fc-dQJ" secondAttribute="top" id="Hvx-08-InG"/>
                             <constraint firstItem="vRP-Ep-xnW" firstAttribute="trailing" secondItem="ngr-fc-dQJ" secondAttribute="trailing" id="JZq-ee-siE"/>
                             <constraint firstItem="ngr-fc-dQJ" firstAttribute="bottom" secondItem="vRP-Ep-xnW" secondAttribute="bottom" id="Zjb-Gy-OVT"/>
+                            <constraint firstItem="cGl-qD-Ta9" firstAttribute="centerY" secondItem="t4X-gH-TSq" secondAttribute="centerY" id="ewF-fg-Ujb"/>
                             <constraint firstItem="vRP-Ep-xnW" firstAttribute="leading" secondItem="ngr-fc-dQJ" secondAttribute="leading" id="pfl-8W-B7N"/>
+                            <constraint firstItem="cGl-qD-Ta9" firstAttribute="centerX" secondItem="t4X-gH-TSq" secondAttribute="centerX" id="vEd-Z7-nIY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ngr-fc-dQJ"/>
                     </view>
@@ -211,6 +219,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="vRP-Ep-xnW" id="MMP-Nz-eLi"/>
+                        <outlet property="descriptionLabel" destination="cGl-qD-Ta9" id="eBm-9L-LMo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZBk-v6-SeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,6 +234,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvE-5F-pNU">
+                                <rect key="frame" x="157" y="436" width="100" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bWq-fe-oBv">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -240,6 +255,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VOs-q9-F7o" firstAttribute="trailing" secondItem="bWq-fe-oBv" secondAttribute="trailing" id="1sf-es-BSp"/>
+                            <constraint firstItem="cvE-5F-pNU" firstAttribute="centerY" secondItem="3u6-cH-SQZ" secondAttribute="centerY" id="Axf-8m-Oxr"/>
+                            <constraint firstItem="cvE-5F-pNU" firstAttribute="centerX" secondItem="3u6-cH-SQZ" secondAttribute="centerX" id="BjK-7X-uFN"/>
                             <constraint firstItem="VOs-q9-F7o" firstAttribute="bottom" secondItem="bWq-fe-oBv" secondAttribute="bottom" id="CI6-EW-OM8"/>
                             <constraint firstItem="bWq-fe-oBv" firstAttribute="top" secondItem="VOs-q9-F7o" secondAttribute="top" id="LQO-Do-LR3"/>
                             <constraint firstItem="bWq-fe-oBv" firstAttribute="leading" secondItem="VOs-q9-F7o" secondAttribute="leading" id="Uaj-rp-vmT"/>
@@ -250,6 +267,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="bWq-fe-oBv" id="dWD-cD-QIa"/>
+                        <outlet property="descriptionLabel" destination="cvE-5F-pNU" id="HDc-kl-Gul"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6O-sE-XtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
