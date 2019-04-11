@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "BookError.h"
 
 @interface UIAlertController (Error)
 
-+(void)showErrorMessage;
++(void)showErrorMessage:(BookErrorType)error;
 
 @end
-
-NS_ASSUME_NONNULL_END

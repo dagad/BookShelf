@@ -28,6 +28,7 @@
 		42028FE0225ABAA8005E6685 /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42028FDE225ABAA8005E6685 /* BookCollectionViewCell.xib */; };
 		42028FE5225C1239005E6685 /* BookDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 42028FE4225C1239005E6685 /* BookDataCenter.m */; };
 		4206CD2D225EB54A0002B883 /* BookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206CD2C225EB54A0002B883 /* BookList.swift */; };
+		420985DC2260052A00FC0879 /* BookError.m in Sources */ = {isa = PBXBuildFile; fileRef = 420985DB2260052A00FC0879 /* BookError.m */; };
 		4A11C4D1225BEB3D0031317A /* UIAlertController+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A11C4D0225BEB3D0031317A /* UIAlertController+Error.m */; };
 		4A145CDC225E91200062E93C /* BookFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145CDB225E91200062E93C /* BookFetcher.swift */; };
 		4A166199225A21AC004A39D9 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A166198225A21AC004A39D9 /* Book.swift */; };
@@ -86,6 +87,8 @@
 		42028FE3225C1239005E6685 /* BookDataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookDataCenter.h; sourceTree = "<group>"; };
 		42028FE4225C1239005E6685 /* BookDataCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookDataCenter.m; sourceTree = "<group>"; };
 		4206CD2C225EB54A0002B883 /* BookList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookList.swift; sourceTree = "<group>"; };
+		420985DA2260052A00FC0879 /* BookError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookError.h; sourceTree = "<group>"; };
+		420985DB2260052A00FC0879 /* BookError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookError.m; sourceTree = "<group>"; };
 		4A11C4CF225BEB3D0031317A /* UIAlertController+Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Error.h"; sourceTree = "<group>"; };
 		4A11C4D0225BEB3D0031317A /* UIAlertController+Error.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Error.m"; sourceTree = "<group>"; };
 		4A145CDB225E91200062E93C /* BookFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFetcher.swift; sourceTree = "<group>"; };
@@ -187,6 +190,7 @@
 		2B9FA2412257306C00BAF875 /* BookShelf */ = {
 			isa = PBXGroup;
 			children = (
+				420985DE2260053A00FC0879 /* Error */,
 				4A11C4D2225E8CBF0031317A /* Fetcher */,
 				2B9FA27A2257322100BAF875 /* Network */,
 				42028FE2225C1216005E6685 /* Database */,
@@ -233,6 +237,15 @@
 				2B912E3B225C655A0016655E /* BookDataCenterEnum.h */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		420985DE2260053A00FC0879 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				420985DA2260052A00FC0879 /* BookError.h */,
+				420985DB2260052A00FC0879 /* BookError.m */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		4A11C4CA225BE62A0031317A /* Category */ = {
@@ -462,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A145CDC225E91200062E93C /* BookFetcher.swift in Sources */,
+				420985DC2260052A00FC0879 /* BookError.m in Sources */,
 				2B9FA26B225731C000BAF875 /* NewViewController.m in Sources */,
 				2B9FA271225731D000BAF875 /* BookmarkViewController.m in Sources */,
 				2B9FA2442257306C00BAF875 /* AppDelegate.m in Sources */,

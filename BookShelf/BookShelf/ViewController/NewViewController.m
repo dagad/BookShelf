@@ -45,7 +45,7 @@
             // Show Empty Result Message
         }
     } failure:^(NSError *error) {
-        [UIAlertController showErrorMessage];
+        [UIAlertController showErrorMessage:BookErrorNetworkFail];
     }];
 }
 

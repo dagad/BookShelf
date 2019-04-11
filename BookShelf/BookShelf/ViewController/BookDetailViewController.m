@@ -69,7 +69,7 @@
         [weakSelf.bookmarkImageView setHidden:NO];
     } failure:^(NSError *error) {
         // Error Handling
-        [UIAlertController showErrorMessage];
+        [UIAlertController showErrorMessage:BookErrorNetworkFail];
     }];
 }
 
