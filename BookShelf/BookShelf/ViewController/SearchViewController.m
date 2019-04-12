@@ -149,11 +149,18 @@
 }
 
 - (void)fetcher:(BookFetcher * _Nonnull)fetcher didUpdateTotalCount:(NSInteger)totalCount {
+    NSString *formattedCount = [self makeFormattedCountString:totalCount];
+    [self.resultCountLabel setText:formattedCount];
     [self.collectionView reloadData];
 }
 
 - (void)fetcher:(BookFetcher * _Nonnull)fetcher didOccur:(NSError * _Nonnull)error {
     NSLog(@"Fetcher Error: %@", error.description);
+}
+
+- (NSString *)makeFormattedCountString:(NSInteger)count {
+    NSString *formattedString = [NSString stringWithFormat:@"Total: %ld", count];
+    return formattedString;
 }
 
 @end

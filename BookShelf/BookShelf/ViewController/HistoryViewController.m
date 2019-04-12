@@ -70,6 +70,7 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    [self.resultCountLabel setText:[self makeFormattedCountString:[self.books count]]];
     return [self.books count];
 }
 
@@ -93,6 +94,11 @@
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
     [self deleteBookAtIndexPath:indexPath];
     [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+}
+
+- (NSString *)makeFormattedCountString:(NSInteger)count {
+    NSString *formattedString = [NSString stringWithFormat:@"Total: %ld", count];
+    return formattedString;
 }
 
 @end
