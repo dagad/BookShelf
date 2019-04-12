@@ -27,11 +27,14 @@
         self.navigationController.navigationBar.prefersLargeTitles = YES;
     }
     
+    [self reloadBooks];
+}
+
+- (void)setCollectionView:(UICollectionView *)collectionView {
+    _collectionView = collectionView;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"BookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"bookcell"];
-    
-    [self reloadBooks];
 }
 
 // MARK: - RequestData

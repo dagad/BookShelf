@@ -41,11 +41,19 @@
 
     self.fetcher = [[BookFetcher alloc] initWithType:FetchTypeBooks books:@[[[Book alloc] init]]];
     self.fetcher.delegate = self;
-    self.searchTextField.delegate = self;
+}
+
+- (void)setCollectionView:(UICollectionView *)collectionView {
+    _collectionView = collectionView;
     self.collectionView.prefetchDataSource = self;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"BookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"bookcell"];
+}
+
+- (void)setSearchTextField:(UITextField *)searchTextField {
+    _searchTextField = searchTextField;
+    self.searchTextField.delegate = self;
 }
 
 // MARK: - KeyboardEvent
