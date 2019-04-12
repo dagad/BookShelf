@@ -32,6 +32,7 @@
     }
 
     [self setTitle:@"Detail"];
+    [self.scrollView setHidden:YES];
     [self requestBookDetail];
 }
 
@@ -39,7 +40,7 @@
     [super viewWillAppear:animated];
     self.isBookmarked = [[BookmarkContainer shared] isRegistered:self.book];
     [self setBookmarkIcon:self.isBookmarked];
-    [self.scrollView setHidden:YES];
+
 }
 
 - (void)setBookData:(Book *)book {
