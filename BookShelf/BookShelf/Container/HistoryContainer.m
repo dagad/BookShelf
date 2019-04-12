@@ -10,10 +10,13 @@
 #import "BookDataCenter.h"
 #import "BookShelf-Swift.h"
 
+/**
+ HistoryContainer
+ 히스토리 정보를 가지고, 디비에 저장, 삭제, 불러오기 기능을 수행한다.
+ */
+
 @interface HistoryContainer ()
-
 @property (strong, nonatomic) NSMutableArray *markedBooks;
-
 @end
 
 @implementation HistoryContainer

@@ -11,6 +11,11 @@
 #import "BookCollectionViewCell.h"
 #import "UIAlertController+Error.h"
 
+/**
+ SearchViewController
+ UICollectionViewDataSourcePrefetching protocol을 채택해 infinity scroll 기능을 구현
+ */
+
 @interface SearchViewController ()
 @property (strong, nonatomic) NSString *keyword;
 @property (strong, nonatomic) BookFetcher *fetcher;

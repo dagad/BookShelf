@@ -10,6 +10,11 @@
 #import "BookDataCenter.h"
 #import "BookShelf-Swift.h"
 
+/**
+ BookmarkContainer
+ 북마크 정보를 가지고, 디비에 저장, 삭제, 불러오기 기능을 수행한다.
+ */
+
 @interface BookmarkContainer ()
 
 @property (strong, nonatomic) NSMutableArray *markedBooks;

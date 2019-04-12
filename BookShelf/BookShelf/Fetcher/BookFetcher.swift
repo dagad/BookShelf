@@ -9,6 +9,12 @@
 import Foundation
 import Moya
 
+/**
+ BookFetcher
+ SearchViewController에서 채택한 UICollectionViewDataSourcePrefetching을 지원하는 클래스
+ 세가지 FetchState를 가지고 서버에서 가져오는 book데이터를 비동기적으로 View에 업데이트한다
+ */
+
 @objc protocol BookFetcherDelegate: class {
     func fetcher(_ fetcher: BookFetcher, didFetchItemsAt indexPaths: [IndexPath])
     func fetcher(_ fetcher: BookFetcher, didUpdateTotalCount totalCount: Int)
