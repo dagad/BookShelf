@@ -10,6 +10,7 @@
 #import "BookCollectionViewCell.h"
 #import "BookDetailViewController.h"
 #import "UIAlertController+Error.h"
+#import "NSString+format.h"
 #import "BookShelf-Swift.h"
 
 @interface NewViewController ()
@@ -64,7 +65,7 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    [self.resultCountLabel setText:[self makeFormattedCountString:[self.books count]]];
+    [self.resultCountLabel setText:[NSString makeFormattedCountString:[self.books count]]];
     return [self.books count];
 }
 
@@ -81,11 +82,6 @@
     CGRect screenSize = UIScreen.mainScreen.bounds;
     CGSize cellSize = CGSizeMake(screenSize.size.width, 105);
     return cellSize;
-}
-
-- (NSString *)makeFormattedCountString:(NSInteger)count {
-    NSString *formattedString = [NSString stringWithFormat:@"Total: %ld", count];
-    return formattedString;
 }
 
 @end

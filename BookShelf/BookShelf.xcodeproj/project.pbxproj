@@ -10,6 +10,7 @@
 		2B05A8C3226082F1002B3B19 /* BookmarkContainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A8C2226082F1002B3B19 /* BookmarkContainerTests.m */; };
 		2B05A8C6226083C1002B3B19 /* BookDatacenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A8C5226083C1002B3B19 /* BookDatacenterTests.m */; };
 		2B05A8C822608472002B3B19 /* HistoryContainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A8C722608472002B3B19 /* HistoryContainerTests.m */; };
+		2B05A8CB226089DB002B3B19 /* NSString+format.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A8CA226089DB002B3B19 /* NSString+format.m */; };
 		2B912DF2225B2E3A0016655E /* BookmarkContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912DF1225B2E3A0016655E /* BookmarkContainer.m */; };
 		2B912DF5225B41EE0016655E /* HistoryContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912DF4225B41EE0016655E /* HistoryContainer.m */; };
 		2B912E3A225C64940016655E /* BookData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912E39225C64940016655E /* BookData.m */; };
@@ -54,6 +55,8 @@
 		2B05A8C2226082F1002B3B19 /* BookmarkContainerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkContainerTests.m; sourceTree = "<group>"; };
 		2B05A8C5226083C1002B3B19 /* BookDatacenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookDatacenterTests.m; sourceTree = "<group>"; };
 		2B05A8C722608472002B3B19 /* HistoryContainerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryContainerTests.m; sourceTree = "<group>"; };
+		2B05A8C9226089DB002B3B19 /* NSString+format.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+format.h"; sourceTree = "<group>"; };
+		2B05A8CA226089DB002B3B19 /* NSString+format.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+format.m"; sourceTree = "<group>"; };
 		2B912DF0225B2E3A0016655E /* BookmarkContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookmarkContainer.h; sourceTree = "<group>"; };
 		2B912DF1225B2E3A0016655E /* BookmarkContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkContainer.m; sourceTree = "<group>"; };
 		2B912DF3225B41EE0016655E /* HistoryContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryContainer.h; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 			children = (
 				4A11C4CF225BEB3D0031317A /* UIAlertController+Error.h */,
 				4A11C4D0225BEB3D0031317A /* UIAlertController+Error.m */,
+				2B05A8C9226089DB002B3B19 /* NSString+format.h */,
+				2B05A8CA226089DB002B3B19 /* NSString+format.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B05A8CB226089DB002B3B19 /* NSString+format.m in Sources */,
 				4A145CDC225E91200062E93C /* BookFetcher.swift in Sources */,
 				420985DC2260052A00FC0879 /* BookError.m in Sources */,
 				2B9FA26B225731C000BAF875 /* NewViewController.m in Sources */,
