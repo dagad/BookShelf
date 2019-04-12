@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol BookCollectionViewCellDelegate;
+#import "BookCollectionViewCellDelegate.h"
 
 @interface HistoryViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, BookCollectionViewCellDelegate>
 

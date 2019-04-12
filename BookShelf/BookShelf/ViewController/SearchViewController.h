@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol BookFetcherDelegate;
+#import "BookShelf-Swift.h"
 
 @interface SearchViewController : UIViewController<UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDelegate, BookFetcherDelegate>
 
