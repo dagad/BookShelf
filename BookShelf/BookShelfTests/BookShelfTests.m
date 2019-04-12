@@ -18,6 +18,11 @@
 
 @implementation BookShelfTests
 
++ (void)setUp {
+    [[BookDataCenter shared] deleteAllBookmark];
+    [[BookDataCenter shared] deleteAllHistory];
+}
+
 // MARK: - BookDataCenter Test
 - (void)testInsertBookmark {
     //given
@@ -46,6 +51,20 @@
     NSArray *booksAfterTest = [[BookDataCenter shared] getBookmarkList];
     NSUInteger differ = [booksBeforeTest count] - [booksAfterTest count];
     XCTAssertEqual(differ, 1);
+}
+
+- (void)testGetBookmakList {
+    //given
+    Book *firstBook = [Book mock];
+    [[BookDataCenter shared] insertBookmark:firstBook];
+    Book *secondBook = [Book mock];
+    [[BookDataCenter shared] insertBookmark:secondBook];
+
+    //when
+    NSArray *books = [[BookDataCenter shared] getBookmarkList];
+
+    //then
+    XCTAssertEqual([books count], 2);
 }
 
 - (void)testInsertHistory {
@@ -77,6 +96,18 @@
     XCTAssertEqual(differ, 1);
 }
 
+- (void)testGetHistory {
+    //given
+    Book *firstBook = [Book mock];
+    [[BookDataCenter shared] insertHistory:firstBook];
+    Book *secondBook = [Book mock];
+    [[BookDataCenter shared] insertHistory:secondBook];
 
+    //when
+    NSArray *books = [[BookDataCenter shared] getHistoryList];
+
+    //then
+    XCTAssertEqual([books count], 2);
+}
 
 @end
