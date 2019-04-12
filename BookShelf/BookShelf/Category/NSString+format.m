@@ -11,6 +11,9 @@
 @implementation NSString (format)
 
 + (NSString *)makeFormattedCountString:(NSInteger)count {
+    if(count == 0) {
+        return nil;
+    }
     NSString *formattedString = [NSString stringWithFormat:@"Total: %ld", count];
     return formattedString;
 }
