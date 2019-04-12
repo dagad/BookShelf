@@ -7,6 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "BookDataCenter.h"
+#import "BookShelf-Swift.h"
+
+@class Book;
 
 @interface BookShelfTests : XCTestCase
 
@@ -14,24 +18,65 @@
 
 @implementation BookShelfTests
 
-- (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+// MARK: - BookDataCenter Test
+- (void)testInsertBookmark {
+    //given
+    Book *book = [Book mock];
+    NSArray *booksBeforeTest = [[BookDataCenter shared] getBookmarkList];
+
+    //when
+    [[BookDataCenter shared] insertBookmark:book];
+
+    //then
+    NSArray *booksAfterTest = [[BookDataCenter shared] getBookmarkList];
+    NSUInteger differ = [booksAfterTest count] - [booksBeforeTest count];
+    XCTAssertEqual(differ, 1);
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)testDeleteBookmark {
+    //given
+    Book *book = [Book mock];
+    [[BookDataCenter shared] insertBookmark:book];
+    NSArray *booksBeforeTest = [[BookDataCenter shared] getBookmarkList];
+
+    //when
+    [[BookDataCenter shared] deleteBookmark:book];
+
+    //then
+    NSArray *booksAfterTest = [[BookDataCenter shared] getBookmarkList];
+    NSUInteger differ = [booksBeforeTest count] - [booksAfterTest count];
+    XCTAssertEqual(differ, 1);
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testInsertHistory {
+    //given
+    Book *book = [Book mock];
+    NSArray *booksBeforeTest = [[BookDataCenter shared] getHistoryList];
+
+    //when
+    [[BookDataCenter shared] insertHistory:book];
+
+    //then
+    NSArray *booksAfterTest = [[BookDataCenter shared] getHistoryList];
+    NSUInteger differ = [booksAfterTest count] - [booksBeforeTest count];
+    XCTAssertEqual(differ, 1);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testDeleteHistory {
+    //given
+    Book *book = [Book mock];
+    [[BookDataCenter shared] insertHistory:book];
+    NSArray *booksBeforeTest = [[BookDataCenter shared] getHistoryList];
+
+    //when
+    [[BookDataCenter shared] deleteHistory:book];
+
+    //then
+    NSArray *booksAfterTest = [[BookDataCenter shared] getHistoryList];
+    NSUInteger differ = [booksBeforeTest count] - [booksAfterTest count];
+    XCTAssertEqual(differ, 1);
 }
+
+
 
 @end

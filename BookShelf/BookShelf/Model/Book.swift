@@ -27,6 +27,26 @@ class Book: NSObject, NSCopying, Mappable {
     var url: String = ""
     var pdf: [String: String] = [String: String]()
 
+    static func mock() -> Book {
+        let book = Book()
+        book.title = "mockTitle"
+        book.subtitle = "mockSubTitle"
+        book.authors = "mookAuthos"
+        book.publisher = "mookPublisher"
+        book.isbn10 = String(Int.random(in: 0..<10000000000))
+        book.isbn13 = String(Int.random(in: 0..<10000000000000))
+        book.pages = "999"
+        book.year = "1990.08.06"
+        book.rating = "5"
+        book.desc = "mookDescription"
+        book.price = "$999"
+        book.imageSource = "https://itbook.store/img/books/9781617294136.png"
+        book.url = "https://itbook.store/books/9781617294136"
+        book.pdf = ["Chapter 2": "https://itbook.store/files/9781617294136/chapter2.pdf",
+                    "Chapter 5": "https://itbook.store/files/9781617294136/chapter5.pdf"]
+        return book
+    }
+
     override init() {
         super.init()
     }

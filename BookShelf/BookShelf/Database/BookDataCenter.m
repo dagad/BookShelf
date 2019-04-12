@@ -112,6 +112,13 @@
     }];
 }
 
+- (void)deleteAllBookmark {
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM BookmarkTable"];
+    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        [db executeUpdate:sql];
+    }];
+}
+
 - (void)deleteBookmark:(Book *)book {
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM BookmarkTable WHERE isbn10 = %@ AND isbn13 = %@", book.isbn10, book.isbn13];
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
@@ -143,6 +150,13 @@
 
         [db executeUpdate:sql, book.error, book.title, book.subtitle, book.authors, book.publisher,
          book.isbn10, book.isbn13, book.pages, book.year, book. rating, book.desc, book.price, book.imageSource, book.url, pdfData];
+    }];
+}
+
+- (void)deleteAllHistory {
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM HistoryTable"];
+    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        [db executeUpdate:sql];
     }];
 }
 

@@ -15,10 +15,12 @@
 + (instancetype)shared;
 
 - (void)insertBookmark:(Book *)book;
+- (void)deleteAllBookmark;
 - (void)deleteBookmark:(Book *)book;
 - (NSArray<Book *> *)getBookmarkList;
 
 - (void)insertHistory:(Book *)book;
+- (void)deleteAllHistory;
 - (void)deleteHistory:(Book *)book;
 - (NSArray<Book *> *)getHistoryList;
 
