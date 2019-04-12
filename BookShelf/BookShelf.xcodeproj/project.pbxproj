@@ -48,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		170D8AA7F76A3A1D460B9D6D /* Pods_BookShelfTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookShelfTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B05A8C0226068B2002B3B19 /* BookCollectionViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCellDelegate.h; sourceTree = "<group>"; };
 		2B912DF0225B2E3A0016655E /* BookmarkContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookmarkContainer.h; sourceTree = "<group>"; };
 		2B912DF1225B2E3A0016655E /* BookmarkContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkContainer.m; sourceTree = "<group>"; };
 		2B912DF3225B41EE0016655E /* HistoryContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryContainer.h; sourceTree = "<group>"; };
@@ -163,6 +164,7 @@
 				42028FDC225ABAA8005E6685 /* BookCollectionViewCell.h */,
 				42028FDD225ABAA8005E6685 /* BookCollectionViewCell.m */,
 				42028FDE225ABAA8005E6685 /* BookCollectionViewCell.xib */,
+				2B05A8C0226068B2002B3B19 /* BookCollectionViewCellDelegate.h */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

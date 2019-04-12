@@ -9,6 +9,7 @@
 #import "HistoryViewController.h"
 #import "BookCollectionViewCell.h"
 #import "BookDetailViewController.h"
+#import "BookCollectionViewCell.h"
 #import "HistoryContainer.h"
 #import "BookShelf-Swift.h"
 

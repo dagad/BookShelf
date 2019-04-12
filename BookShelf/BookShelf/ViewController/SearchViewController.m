@@ -10,6 +10,7 @@
 #import "BookDetailViewController.h"
 #import "BookCollectionViewCell.h"
 #import "UIAlertController+Error.h"
+#import "BookShelf-Swift.h"
 
 /**
  SearchViewController

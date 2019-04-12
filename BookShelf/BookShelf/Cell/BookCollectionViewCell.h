@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookCollectionViewCellDelegate.h"
 
 @class Book;
-
-@protocol BookCollectionViewCellDelegate;
 
 @interface BookCollectionViewCell : UICollectionViewCell
 
@@ -24,8 +23,4 @@
 - (void)configureCellWithBook:(Book *)book;
 - (void)setBookCellHidden:(BOOL)hidden;
 
-@end
-
-@protocol BookCollectionViewCellDelegate <NSObject>
-- (void)bookCollectionViewCellDidDelete:(BookCollectionViewCell *)cell;
 @end
