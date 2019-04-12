@@ -25,7 +25,7 @@
     [self.titleLabel setText:book.title];
     [self.subTitleLabel setText:book.subtitle];
     [self.priceLabel setText:book.price];
-    [self.isbnLabel setText:book.isbn13];
+    [self.isbnLabel setText:[self formattedISBN:book]];
     [self hideEmptyLabel];
 }
 
@@ -34,6 +34,14 @@
     [self.subTitleLabel setHidden:(self.subTitleLabel.text.length == 0)];
     [self.priceLabel setHidden:(self.priceLabel.text.length == 0)];
     [self.isbnLabel setHidden:(self.isbnLabel.text.length == 0)];
+}
+
+- (NSString *)formattedISBN:(Book *)book {
+    NSString *formattedISBN;
+    if([book.isbn13 length] > 0) {
+        formattedISBN = [NSString stringWithFormat:@"ISBN13: %@", book.isbn13];
+    }
+    return formattedISBN;
 }
 
 - (IBAction)delete:(id)sender {
