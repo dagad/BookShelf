@@ -40,9 +40,10 @@
     [BookService.shared requestNewBooksWithSuccess:^(NSArray<Book *> *books) {
         if(books) {
             weakSelf.books = [NSArray arrayWithArray:books];
+            [weakSelf.collectionView setHidden:NO];
             [weakSelf.collectionView reloadData];
         } else {
-            // Show Empty Result Message
+            [weakSelf.collectionView setHidden:YES];
         }
     } failure:^(NSError *error) {
         [UIAlertController showErrorMessage:BookErrorNetworkFail];

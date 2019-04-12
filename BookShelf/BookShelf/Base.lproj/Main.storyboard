@@ -36,6 +36,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No New book" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDZ-oG-9qw">
+                                <rect key="frame" x="145" y="436" width="124.5" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mCS-ah-1Fn">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,6 +59,8 @@
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="mCS-ah-1Fn" secondAttribute="bottom" id="0Nk-HU-m2h"/>
                             <constraint firstItem="mCS-ah-1Fn" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="7JJ-bX-Dy4"/>
                             <constraint firstItem="mCS-ah-1Fn" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="7RW-QI-yGG"/>
+                            <constraint firstItem="sDZ-oG-9qw" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="7Zu-WV-cgj"/>
+                            <constraint firstItem="sDZ-oG-9qw" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="KW2-gn-ryv"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="mCS-ah-1Fn" secondAttribute="trailing" id="Q5A-mW-Dkv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -60,6 +68,7 @@
                     <navigationItem key="navigationItem" title="New" largeTitleDisplayMode="always" id="rpf-lg-Uzx"/>
                     <connections>
                         <outlet property="collectionView" destination="mCS-ah-1Fn" id="t5Z-Ah-2mC"/>
+                        <outlet property="descriptionLabel" destination="sDZ-oG-9qw" id="pJ3-J2-xpy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

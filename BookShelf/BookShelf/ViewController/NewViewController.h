@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *books;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
