@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B05A8C3226082F1002B3B19 /* BookmarkContainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A8C2226082F1002B3B19 /* BookmarkContainerTests.m */; };
 		2B05A8C6226083C1002B3B19 /* BookDatacenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A8C5226083C1002B3B19 /* BookDatacenterTests.m */; };
+		2B05A8C822608472002B3B19 /* HistoryContainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A8C722608472002B3B19 /* HistoryContainerTests.m */; };
 		2B912DF2225B2E3A0016655E /* BookmarkContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912DF1225B2E3A0016655E /* BookmarkContainer.m */; };
 		2B912DF5225B41EE0016655E /* HistoryContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912DF4225B41EE0016655E /* HistoryContainer.m */; };
 		2B912E3A225C64940016655E /* BookData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912E39225C64940016655E /* BookData.m */; };
@@ -52,6 +53,7 @@
 		2B05A8C0226068B2002B3B19 /* BookCollectionViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCellDelegate.h; sourceTree = "<group>"; };
 		2B05A8C2226082F1002B3B19 /* BookmarkContainerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkContainerTests.m; sourceTree = "<group>"; };
 		2B05A8C5226083C1002B3B19 /* BookDatacenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookDatacenterTests.m; sourceTree = "<group>"; };
+		2B05A8C722608472002B3B19 /* HistoryContainerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryContainerTests.m; sourceTree = "<group>"; };
 		2B912DF0225B2E3A0016655E /* BookmarkContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookmarkContainer.h; sourceTree = "<group>"; };
 		2B912DF1225B2E3A0016655E /* BookmarkContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkContainer.m; sourceTree = "<group>"; };
 		2B912DF3225B41EE0016655E /* HistoryContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryContainer.h; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				2B05A8C2226082F1002B3B19 /* BookmarkContainerTests.m */,
+				2B05A8C722608472002B3B19 /* HistoryContainerTests.m */,
 				2B05A8C5226083C1002B3B19 /* BookDatacenterTests.m */,
 				2B9FA2602257306D00BAF875 /* Info.plist */,
 			);
@@ -507,6 +510,7 @@
 			files = (
 				2B05A8C6226083C1002B3B19 /* BookDatacenterTests.m in Sources */,
 				2B05A8C3226082F1002B3B19 /* BookmarkContainerTests.m in Sources */,
+				2B05A8C822608472002B3B19 /* HistoryContainerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

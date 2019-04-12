@@ -1,5 +1,5 @@
 //
-//  BookmarkContainerTests.m
+//  HistoryContainerTests.m
 //  BookShelfTests
 //
 //  Created by dagad on 12/04/2019.
@@ -8,52 +8,53 @@
 
 #import <XCTest/XCTest.h>
 #import "BookDataCenter.h"
-#import "BookmarkContainer.h"
+#import "HistoryContainer.h"
 #import "BookShelf-Swift.h"
 
 @class Book;
 
-@interface BookmarkContainerTests : XCTestCase
+@interface HistoryContainerTests : XCTestCase
 
 @end
 
-@implementation BookmarkContainerTests
+@implementation HistoryContainerTests
 
 + (void)setUp {
     NSLog(@"dagad %@", NSStringFromSelector(_cmd));
-    [[BookDataCenter shared] deleteAllBookmark];
+    [[BookDataCenter shared] deleteAllHistory];
 }
 
 + (void)tearDown {
     NSLog(@"dagad %@", NSStringFromSelector(_cmd));
-    [[BookDataCenter shared] deleteAllBookmark];
+    [[BookDataCenter shared] deleteAllHistory];
 }
 
 // BookmarkContainer
 - (void)testSuccessfulRegisterBook {
     NSLog(@"dagad %@", NSStringFromSelector(_cmd));
     //given
+    [[BookDataCenter shared] deleteAllHistory];
     Book *book = [Book mock];
 
     //when
-    [[BookmarkContainer shared] registerBook:book];
+    [[HistoryContainer shared] addBook:book];
 
     //then
-    XCTAssertTrue([[BookmarkContainer shared] isRegistered:book]);
+    XCTAssertTrue([[HistoryContainer shared] isContain:book]);
 }
 
 - (void)testFailedRegisterBook {
     NSLog(@"dagad %@", NSStringFromSelector(_cmd));
     //given
-    [[BookDataCenter shared] deleteAllBookmark];
+    [[BookDataCenter shared] deleteAllHistory];
     Book *book = [Book mock];
 
     //when
-    [[BookmarkContainer shared] registerBook:book];
+    [[HistoryContainer shared] addBook:book];
 
     //then
     Book *otherBook = [Book mock];
-    XCTAssertFalse([[BookmarkContainer shared] isRegistered:otherBook]);
+    XCTAssertFalse([[HistoryContainer shared] isContain:otherBook]);
 }
 
 @end

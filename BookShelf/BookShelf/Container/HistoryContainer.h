@@ -16,5 +16,6 @@
 - (NSArray<Book *> *)getViewedBooks;
 - (void)addBook:(Book *)book;
 - (void)delete:(Book *)book;
+- (BOOL)isContain:(Book *)book;
 
 @end

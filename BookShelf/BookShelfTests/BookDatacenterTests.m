@@ -116,6 +116,7 @@
 - (void)testDeleteHistory {
     NSLog(@"dagad %@", NSStringFromSelector(_cmd));
     //given
+    [[BookDataCenter shared] deleteAllBookmark];
     Book *book = [Book mock];
     [[BookDataCenter shared] insertHistory:book];
     NSArray *booksBeforeTest = [[BookDataCenter shared] getHistoryList];
@@ -132,6 +133,7 @@
 - (void)testDeleteAllHistory {
     NSLog(@"dagad %@", NSStringFromSelector(_cmd));
     //given
+    [[BookDataCenter shared] deleteAllBookmark];
     for(NSInteger i = 0;i<10;i++) {
         [[BookDataCenter shared] insertHistory:[Book mock]];
     }
@@ -147,6 +149,7 @@
 - (void)testGetHistory {
     NSLog(@"dagad %@", NSStringFromSelector(_cmd));
     //given
+    [[BookDataCenter shared] deleteAllBookmark];
     Book *firstBook = [Book mock];
     [[BookDataCenter shared] insertHistory:firstBook];
     Book *secondBook = [Book mock];
