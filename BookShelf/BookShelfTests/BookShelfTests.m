@@ -23,6 +23,11 @@
     [[BookDataCenter shared] deleteAllHistory];
 }
 
++ (void)tearDown {
+    [[BookDataCenter shared] deleteAllBookmark];
+    [[BookDataCenter shared] deleteAllHistory];
+}
+
 // MARK: - BookDataCenter Test
 - (void)testInsertBookmark {
     //given
@@ -51,6 +56,20 @@
     NSArray *booksAfterTest = [[BookDataCenter shared] getBookmarkList];
     NSUInteger differ = [booksBeforeTest count] - [booksAfterTest count];
     XCTAssertEqual(differ, 1);
+}
+
+- (void)testDeleteAllBookmark {
+    //given
+    for(int i = 0;i<10;i++) {
+        [[BookDataCenter shared] insertBookmark:[Book mock]];
+    }
+
+    //when
+    [[BookDataCenter shared] deleteAllBookmark];
+
+    //then
+    NSArray *booksAfterTest = [[BookDataCenter shared] getBookmarkList];
+    XCTAssertEqual([booksAfterTest count], 0);
 }
 
 - (void)testGetBookmakList {
@@ -94,6 +113,20 @@
     NSArray *booksAfterTest = [[BookDataCenter shared] getHistoryList];
     NSUInteger differ = [booksBeforeTest count] - [booksAfterTest count];
     XCTAssertEqual(differ, 1);
+}
+
+- (void)testDeleteAllHistory {
+    //given
+    for(NSInteger i = 0;i<10;i++) {
+        [[BookDataCenter shared] insertHistory:[Book mock]];
+    }
+
+    //when
+    [[BookDataCenter shared] deleteAllHistory];
+
+    //then
+    NSArray *booksAfterTest = [[BookDataCenter shared] getHistoryList];
+    XCTAssertEqual([booksAfterTest count], 0);
 }
 
 - (void)testGetHistory {
