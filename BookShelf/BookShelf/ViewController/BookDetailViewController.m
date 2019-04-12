@@ -45,7 +45,6 @@
 
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleBookmark)];
     [self.bookmarkImageView addGestureRecognizer:gesture];
-    [self.bookmarkImageView setHidden:YES];
 
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = YES;
@@ -59,6 +58,7 @@
     [super viewWillAppear:animated];
     self.isBookmarked = [[BookmarkContainer shared] isRegistered:self.book];
     [self setBookmarkIcon:self.isBookmarked];
+    [self.scrollView setHidden:YES];
 }
 
 - (void)requestBookDetail {
@@ -66,9 +66,8 @@
     [BookService.shared requestBookDetailWithIsbn:self.book.isbn13 success:^(Book * book) {
         [[HistoryContainer shared] addBook:book];
         [weakSelf setBookData: book];
-        [weakSelf.bookmarkImageView setHidden:NO];
+        [self.scrollView setHidden:NO];
     } failure:^(NSError *error) {
-        // Error Handling
         [UIAlertController showErrorMessage:BookErrorNetworkFail];
     }];
 }
