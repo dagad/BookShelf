@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B05A8C3226082F1002B3B19 /* BookmarkContainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A8C2226082F1002B3B19 /* BookmarkContainerTests.m */; };
+		2B05A8C6226083C1002B3B19 /* BookDatacenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A8C5226083C1002B3B19 /* BookDatacenterTests.m */; };
 		2B912DF2225B2E3A0016655E /* BookmarkContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912DF1225B2E3A0016655E /* BookmarkContainer.m */; };
 		2B912DF5225B41EE0016655E /* HistoryContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912DF4225B41EE0016655E /* HistoryContainer.m */; };
 		2B912E3A225C64940016655E /* BookData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B912E39225C64940016655E /* BookData.m */; };
@@ -15,7 +17,6 @@
 		2B9FA24F2257306D00BAF875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B9FA24E2257306D00BAF875 /* Assets.xcassets */; };
 		2B9FA2522257306D00BAF875 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B9FA2502257306D00BAF875 /* LaunchScreen.storyboard */; };
 		2B9FA2552257306D00BAF875 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA2542257306D00BAF875 /* main.m */; };
-		2B9FA25F2257306D00BAF875 /* BookShelfTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA25E2257306D00BAF875 /* BookShelfTests.m */; };
 		2B9FA26B225731C000BAF875 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA26A225731C000BAF875 /* NewViewController.m */; };
 		2B9FA26E225731CA00BAF875 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA26D225731CA00BAF875 /* SearchViewController.m */; };
 		2B9FA271225731D000BAF875 /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9FA270225731D000BAF875 /* BookmarkViewController.m */; };
@@ -49,6 +50,8 @@
 /* Begin PBXFileReference section */
 		170D8AA7F76A3A1D460B9D6D /* Pods_BookShelfTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookShelfTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B05A8C0226068B2002B3B19 /* BookCollectionViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCellDelegate.h; sourceTree = "<group>"; };
+		2B05A8C2226082F1002B3B19 /* BookmarkContainerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkContainerTests.m; sourceTree = "<group>"; };
+		2B05A8C5226083C1002B3B19 /* BookDatacenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookDatacenterTests.m; sourceTree = "<group>"; };
 		2B912DF0225B2E3A0016655E /* BookmarkContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookmarkContainer.h; sourceTree = "<group>"; };
 		2B912DF1225B2E3A0016655E /* BookmarkContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkContainer.m; sourceTree = "<group>"; };
 		2B912DF3225B41EE0016655E /* HistoryContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryContainer.h; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		2B9FA2532257306D00BAF875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B9FA2542257306D00BAF875 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B9FA25A2257306D00BAF875 /* BookShelfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookShelfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B9FA25E2257306D00BAF875 /* BookShelfTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookShelfTests.m; sourceTree = "<group>"; };
 		2B9FA2602257306D00BAF875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B9FA269225731C000BAF875 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		2B9FA26A225731C000BAF875 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
@@ -215,7 +217,8 @@
 		2B9FA25D2257306D00BAF875 /* BookShelfTests */ = {
 			isa = PBXGroup;
 			children = (
-				2B9FA25E2257306D00BAF875 /* BookShelfTests.m */,
+				2B05A8C2226082F1002B3B19 /* BookmarkContainerTests.m */,
+				2B05A8C5226083C1002B3B19 /* BookDatacenterTests.m */,
 				2B9FA2602257306D00BAF875 /* Info.plist */,
 			);
 			path = BookShelfTests;
@@ -502,7 +505,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B9FA25F2257306D00BAF875 /* BookShelfTests.m in Sources */,
+				2B05A8C6226083C1002B3B19 /* BookDatacenterTests.m in Sources */,
+				2B05A8C3226082F1002B3B19 /* BookmarkContainerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
